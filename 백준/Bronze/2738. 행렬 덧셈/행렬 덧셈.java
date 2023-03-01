@@ -12,7 +12,6 @@ public class Main {
 
         int[][] A = new int[N][M];
         int[][] B = new int[N][M];
-        int[][] result = new int[N][M];
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
@@ -29,15 +28,9 @@ public class Main {
         }
 
         for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                result[i][j] = A[i][j] + B[i][j];
-            }
-        }
-
-        for (int i = 0; i < N; i++) {
             if (i > 0) sb.append("\n");
             for (int j = 0; j < M; j++) {
-                sb.append(result[i][j] + " ");
+                sb.append(A[i][j] + B[i][j] + " ");
             }
         }
         System.out.println(sb);
