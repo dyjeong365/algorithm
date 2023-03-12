@@ -3,10 +3,11 @@ class Solution {
         String answer = "";
         
         for(int i = 0; i < my_string.length(); i++){
-            String ALPHABET = Character.toString(my_string.charAt(i));
+            // String ALPHABET = Character.toString(my_string.charAt(i));
+            String ALPHABET = String.valueOf(my_string.charAt(i));
             
-            if(my_string.charAt(i) < 97) answer = answer + ALPHABET.toLowerCase();
-            else answer = answer + ALPHABET.toUpperCase();
+            if(my_string.charAt(i) < 97) answer += ALPHABET.toLowerCase();
+            else answer += ALPHABET.toUpperCase();
         }
         return answer;
     }
