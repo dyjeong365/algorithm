@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Stack;
 
 public class Main {
@@ -18,10 +17,9 @@ public class Main {
         }
 
         int sum = 0;
-        int stackSize = stack.size();
-
-        for (int i = 0; i < stackSize; i++) {
-            sum += stack.pop();
+        
+        for (int el : stack) {
+            sum += el;
         }
         System.out.println(sum);
     }
