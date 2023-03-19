@@ -6,16 +6,11 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         int line = Integer.parseInt(br.readLine());
-        String star = "*";
 
-        for (int i = 0; i <= line; i++) {
-            if (i > 0) {
-                sb.append(star + "\n");
-                star += "*";
-            }
-            for (int j = line; j >= i + 2; j--) {
-                sb.append(" ");
-            }
+        for (int i = 1; i <= line; i++) {
+            sb.append(" ".repeat(line - i));
+            sb.append("*".repeat(i));
+            sb.append("\n");
         }
         System.out.print(sb);
     }
