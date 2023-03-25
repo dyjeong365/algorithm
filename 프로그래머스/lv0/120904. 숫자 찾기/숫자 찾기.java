@@ -1,10 +1,11 @@
 class Solution {
     public int solution(int num, int k) {
+        
         String strNum = String.valueOf(num);
-            
-        for (int i=0; i<strNum.length(); i++){
-            if (strNum.charAt(i) == (k + '0')) return i+1;
-        }
-        return -1;
+        String strK = String.valueOf(k);
+        
+        int result = strNum.indexOf(strK);
+        
+        return result < 0 ? -1 : result + 1;
     }
 }
