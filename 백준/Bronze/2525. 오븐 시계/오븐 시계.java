@@ -9,11 +9,10 @@ public class Main {
         int hour = Integer.parseInt(st.nextToken());
         int minutes = Integer.parseInt(st.nextToken());
         int extraMinutes = Integer.parseInt(br.readLine());
-        int sumMinutes = minutes + extraMinutes;
+        int sum = hour * 60 + minutes + extraMinutes;
 
-        hour = hour + sumMinutes / 60;
-        hour %= 24;
-        minutes = sumMinutes - ((sumMinutes) / 60) * 60;
+        hour = (sum / 60) % 24;
+        minutes = (sum % 60) % 60;
 
         System.out.println(hour + " " + minutes);
     }
