@@ -10,8 +10,8 @@ public class Main {
         int[] chess = {1, 1, 2, 2, 2, 8};
 
         for (int i = 0; i < chess.length; i++) {
-            chess[i] -= Integer.parseInt(st.nextToken());
-            sb.append(chess[i] + " ");
+            int input = Integer.parseInt(st.nextToken());
+            sb.append((chess[i] - input) + " ");
         }
         System.out.println(sb);
     }
