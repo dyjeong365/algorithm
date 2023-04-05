@@ -11,16 +11,18 @@ public class Main {
         int countOfPrimeNumber = 0;
 
         for (int i = 0; i < testcase; i++) {
+            boolean isPrime = true;
             int input = Integer.parseInt(st.nextToken());
+
             if (input == 1) continue;
-            if (input == 2) {
-                countOfPrimeNumber++;
-                continue;
+
+            for (int j = 2; j <= Math.sqrt(input); j++) {
+                if (input % j == 0) {
+                    isPrime = false;
+                    break;
+                }
             }
-            for (int j = 2; j < input; j++) {
-                if (input % j == 0) break;
-                if (j == input - 1) countOfPrimeNumber++;
-            }
+            if (isPrime) countOfPrimeNumber++;
         }
         System.out.println(countOfPrimeNumber);
     }
