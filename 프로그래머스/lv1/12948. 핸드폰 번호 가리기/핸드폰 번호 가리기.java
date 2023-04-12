@@ -1,12 +1,10 @@
 class Solution {
     public String solution(String phone_number) {
-        String answer = "";
-        final int LENGTH = phone_number.length();
+        char[] answer = phone_number.toCharArray();
         
-        for(int i=0; i<LENGTH; i++){
-            if(LENGTH-i > 4) answer += "*";
-            else answer = answer + phone_number.charAt(i);
+        for(int i=0; i<phone_number.length()-4; i++){
+            answer[i] = '*';
         }
-        return answer;
+        return String.valueOf(answer);
     }
 }
