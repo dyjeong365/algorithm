@@ -6,12 +6,9 @@ public class Solution {
         StringBuilder sb = new StringBuilder();
         int number = Integer.parseInt(br.readLine());
         
-        for(int i=0; i<number; i++){
-            if(i>0) sb.append("\n");
-            for(int j=0; j<=i; j++){
-                sb.append("*");
-            }
+        for(int i=1; i<=number; i++){
+            sb.append("*".repeat(i)).append("\n");
         }
-        System.out.println(sb);
+        System.out.print(sb);
     }
 }
