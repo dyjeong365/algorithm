@@ -1,19 +1,12 @@
-import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public int solution(int[] arr1, int[] arr2) {
-        final int LENGTH1 = arr1.length;
-        final int LENGTH2 = arr1.length;
+        int answer = Integer.compare(arr1.length, arr2.length);
         
-        if(LENGTH1 > LENGTH2) return 1;
-        else if(LENGTH1 < LENGTH2) return -1;
-        else{
-            final int SUM1 = Arrays.stream(arr1).sum();
-            final int SUM2 = Arrays.stream(arr2).sum();
-            
-            if(SUM1 > SUM2) return 1;
-            else if(SUM1 < SUM2) return -1;
-            else return 0;
-        } 
+        if(answer == 0){
+            answer = Integer.compare(IntStream.of(arr1).sum(), IntStream.of(arr2).sum());
+        }
+        return answer;
     }
 }
