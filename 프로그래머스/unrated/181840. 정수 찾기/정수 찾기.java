@@ -1,12 +1,7 @@
+import java.util.*;
+
 class Solution {
     public int solution(int[] num_list, int n) {
-        int answer = 0;
-        
-        for(var num : num_list){
-            if(num == n){
-                answer = 1;
-            }
-        }
-        return answer;
+        return Arrays.stream(num_list).anyMatch(num -> num == n) ? 1 : 0;
     }
 }
