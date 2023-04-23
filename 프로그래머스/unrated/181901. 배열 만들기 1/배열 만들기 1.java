@@ -1,10 +1,7 @@
+import java.util.stream.*;
+
 class Solution {
     public int[] solution(int n, int k) {
-        int[] answer = new int[n/k];
-        
-        for(int i=1; i<=n/k; i++){
-            answer[i-1] = k * i;
-        }
-        return answer;
+        return IntStream.rangeClosed(1, n/k).map(i -> k*i).toArray();
     }
 }
