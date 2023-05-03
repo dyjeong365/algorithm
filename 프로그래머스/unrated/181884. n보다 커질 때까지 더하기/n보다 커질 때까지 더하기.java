@@ -1,11 +1,7 @@
+import java.util.*;
+
 class Solution {
     public int solution(int[] numbers, int n) {
-        int answer = 0;
-        
-        for(var number : numbers){
-            if(answer > n) break;
-            answer += number;
-        }
-        return answer;
+        return Arrays.stream(numbers).reduce(0, (a, b) -> a > n ? a : a + b);
     }
 }
