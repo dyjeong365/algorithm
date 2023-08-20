@@ -2,27 +2,28 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] array) {
-        int answer = 0;
-        boolean flag = false;
-        int[] count = new int[1000];
+        int mode = 0;
+        int maxFrequency = 0;
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
         
-        if(array.length == 1) return array[0];
-        
-        for(int i=0; i<array.length; i++){
-            count[array[i]]++;
+        for(var num : array){
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
         }
         
-        final int MAX = Arrays.stream(count).max().getAsInt();
-        
-        for(int i=0; i<count.length; i++){
-            if(MAX == count[i]){
-                if(flag) return -1;
-                
-                flag = true;
-                answer = i;
+        for(var entry : frequencyMap.entrySet()){
+            int num = entry.getKey();
+            int frequency = entry.getValue();
+            
+            if(frequency > maxFrequency){
+                maxFrequency = frequency;
+                mode = num;
+            }
+            
+            else if(frequency == maxFrequency){
+                mode = -1;
             }
         }
         
-        return answer;
+        return mode;
     }
 }
