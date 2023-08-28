@@ -2,7 +2,6 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr, int[] query) {
-        int[] answer = {};
         for(int i=0; i<query.length; i++){
             arr = 
                 i % 2 == 0 
