@@ -1,7 +1,10 @@
 import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public int solution(int[] nums) {
-        return (int)Arrays.stream(nums).distinct().limit(nums.length / 2).count();
+        Set<Integer> numsSet = new HashSet<>(Arrays.stream(nums).boxed().collect(Collectors.toSet()));
+        
+        return Math.min(numsSet.size(), nums.length / 2);
     }
 }
