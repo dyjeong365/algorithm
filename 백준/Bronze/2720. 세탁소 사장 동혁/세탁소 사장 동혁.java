@@ -11,12 +11,11 @@ public class Main {
             int c = Integer.parseInt(br.readLine());
 
             for (int j = 0; j < changeAmount.length; j++) {
-                int result = c / changeAmount[j];
-                sb.append(result);
+                sb.append(c / changeAmount[j]);
 
-                if (j != 3) sb.append(" ");
+                if (j != changeAmount.length) sb.append(" ");
 
-                c -= (result * changeAmount[j]);
+                c %= changeAmount[j];
             }
 
             System.out.println(sb);
