@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -13,8 +12,12 @@ public class Main {
 
     private static int findMinConstructor(int number) {
         for (int i = 1; i < number; i++) {
-            String[] input = String.valueOf(i).split("");
-            int result = Arrays.stream(input).mapToInt(Integer::parseInt).sum() + i;
+            char[] input = String.valueOf(i).toCharArray();
+            int result = i;
+
+            for (var el : input) {
+                result += Character.getNumericValue(el);
+            }
 
             if (result == number) return i;
         }
