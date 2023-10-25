@@ -10,16 +10,17 @@ public class Main {
         System.out.println(findMinConstructor(N));
     }
 
-    private static int findMinConstructor(int number) {
-        for (int i = 1; i < number; i++) {
-            char[] input = String.valueOf(i).toCharArray();
-            int result = i;
+    private static int findMinConstructor(int N) {
+        for (int i = 1; i < N; i++) {
+            int number = i;
+            int sum = 0;
 
-            for (var el : input) {
-                result += Character.getNumericValue(el);
+            while (number != 0) {
+                sum += number % 10;
+                number /= 10;
             }
 
-            if (result == number) return i;
+            if (sum + i == N) return i;
         }
 
         return 0;
