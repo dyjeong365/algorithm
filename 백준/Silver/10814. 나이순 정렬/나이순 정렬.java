@@ -1,26 +1,31 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
         final int N = Integer.parseInt(br.readLine());
-        String[][] people = new String[N][];
+        StringBuilder sb = new StringBuilder();
+        StringBuilder[] people = new StringBuilder[201];
 
-        for (int i = 0; i < N; i++) {
-            people[i] = br.readLine().split(" ");
+        for (int i = 0; i < people.length; i++) {
+            people[i] = new StringBuilder();
         }
 
-        Arrays.sort(people, (a, b) -> Integer.parseInt(a[0]) - Integer.parseInt(b[0]));
-
         for (int i = 0; i < N; i++) {
-            sb.append(people[i][0])
+            String[] input = br.readLine().split(" ");
+            int age = Integer.parseInt(input[0]);
+            String name = input[1];
+
+            people[age].append(age)
                     .append(" ")
-                    .append(people[i][1])
+                    .append(name)
                     .append("\n");
+        }
+
+        for (var el : people) {
+            sb.append(el);
         }
 
         System.out.print(sb);
