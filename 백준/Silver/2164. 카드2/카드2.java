@@ -1,26 +1,24 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         final int N = Integer.parseInt(br.readLine());
-        Deque<Integer> cards = new LinkedList<>();
-        int top = 1;
+        Queue<Integer> cards = new LinkedList<>();
 
         for (int i = 1; i <= N; i++) {
             cards.offer(i);
         }
 
         while (cards.size() >= 2) {
-            cards.pollFirst();
-            top = cards.pollFirst();
-            cards.offerLast(top);
+            cards.poll();
+            cards.offer(cards.poll());
         }
 
-        System.out.println(top);
+        System.out.println(cards.peek());
     }
 }
