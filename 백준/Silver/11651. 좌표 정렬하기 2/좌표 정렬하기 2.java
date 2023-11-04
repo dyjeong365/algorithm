@@ -7,20 +7,27 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         final int N = Integer.parseInt(br.readLine());
-        int[][] matrix = new int[N][2];
+        int[][] coordinate = new int[N][2];
 
         for (int i = 0; i < N; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            
-            matrix[i][0] = Integer.parseInt(st.nextToken());
-            matrix[i][1] = Integer.parseInt(st.nextToken());
+
+            for (int j = 0; j < coordinate[i].length; j++) {
+                coordinate[i][j] = Integer.parseInt(st.nextToken());
+            }
         }
 
-        Arrays.sort(matrix, (a, b) -> a[1] == b[1] ? a[0] - b[0] : a[1] - b[1]);
+        Arrays.sort(coordinate, (a, b) -> a[1] == b[1] ? a[0] - b[0] : a[1] - b[1]);
 
-        for (int[] el : matrix) {
-            System.out.println(el[0] + " " + el[1]);
+        for (int[] el : coordinate) {
+            sb.append(el[0])
+                    .append(" ")
+                    .append(el[1])
+                    .append("\n");
         }
+
+        System.out.println(sb);
     }
 }
