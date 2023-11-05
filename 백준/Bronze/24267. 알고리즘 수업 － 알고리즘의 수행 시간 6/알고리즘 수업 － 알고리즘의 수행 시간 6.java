@@ -8,14 +8,8 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         long n = Long.parseLong(br.readLine());
-        long count = 0;
 
-        while (n > 0) {
-            count += ((n - 2) * (n - 1)) / 2;
-            n--;
-        }
-
-        sb.append(count)
+        sb.append(n * (n - 1) * (n - 2) / 6)
                 .append("\n")
                 .append(3);
 
