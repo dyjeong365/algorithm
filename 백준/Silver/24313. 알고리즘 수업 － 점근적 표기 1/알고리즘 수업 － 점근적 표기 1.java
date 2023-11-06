@@ -15,7 +15,7 @@ public class Main {
         final int N0 = Integer.parseInt(br.readLine());
 
         for (int n = N0; n <= 100; n++) {
-            if (A1 * n + A0 > C * n) {
+            if (A1 * n + A0 > C * n || A1 > C) {
                 System.out.println(0);
                 return;
             }
