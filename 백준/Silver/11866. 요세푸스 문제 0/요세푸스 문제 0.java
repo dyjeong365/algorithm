@@ -2,33 +2,36 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder("<");
-        List<Integer> list = new LinkedList<>();
+        Queue<Integer> queue = new LinkedList<>();
         String[] input = br.readLine().split(" ");
 
         final int N = Integer.parseInt(input[0]);
         final int K = Integer.parseInt(input[1]);
 
         for (int i = 1; i <= N; i++) {
-            list.add(i);
+            queue.offer(i);
         }
 
-        while (!list.isEmpty()) {
-            int indexOfK = (K - 1) % list.size();
-            int valueOfIndexK = list.get(indexOfK);
+        while (queue.size() > 1) {
+            int indexOfK = (K - 1) % queue.size();
 
-            while (list.get(0) != valueOfIndexK) {
-                list.add(list.remove(0));
+            for (int i = 0; i < indexOfK; i++) {
+                queue.offer(queue.poll());
             }
 
-            sb.append(list.remove(0)).append(list.isEmpty() ? ">" : ", ");
+            sb.append(queue.poll())
+                    .append(", ");
         }
 
+        sb.append(queue.poll())
+                .append(">");
+        
         System.out.println(sb);
     }
 }
