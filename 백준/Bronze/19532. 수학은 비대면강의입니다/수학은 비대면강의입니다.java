@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         String[] input = br.readLine().split(" ");
 
         int a = Integer.parseInt(input[0]);
@@ -20,9 +21,13 @@ public class Main {
         for (int x = MIN; x <= MAX; x++) {
             for (int y = MIN; y <= MAX; y++) {
                 if (a * x + b * y == c && d * x + e * y == f) {
-                    System.out.println(x + " " + y);
+                    sb.append(x)
+                            .append(" ")
+                            .append(y);
                 }
             }
         }
+
+        System.out.println(sb);
     }
 }
