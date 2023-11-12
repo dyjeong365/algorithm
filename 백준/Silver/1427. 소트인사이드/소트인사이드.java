@@ -7,15 +7,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-        
-        String[] input = br.readLine().split("");
+
         PriorityQueue<Integer> number = new PriorityQueue<>((a, b) -> b - a);
 
-        for (int i = 0; i < input.length; i++) {
-            number.offer(Integer.parseInt(input[i]));
+        for (char el : br.readLine().toCharArray()) {
+            number.offer(Character.getNumericValue(el));
         }
 
-        for (int i = 0; i < input.length; i++) {
+        final int NUMBER_OF_DIGITS = number.size();
+
+        for (int i = 0; i < NUMBER_OF_DIGITS; i++) {
             sb.append(number.poll());
         }
 
