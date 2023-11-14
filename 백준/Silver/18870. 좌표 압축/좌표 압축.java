@@ -12,6 +12,8 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         final int N = Integer.parseInt(br.readLine());
         int[] coordinates = new int[N];
+        Map<Integer, Integer> map = new HashMap<>();
+        int theNumberOfSmallerValue = 0;
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -19,16 +21,14 @@ public class Main {
             coordinates[i] = Integer.parseInt(st.nextToken());
         }
 
-        Map<Integer, Integer> map = new HashMap<>();
+        int[] copyOfCoordinates = Arrays.copyOf(coordinates, coordinates.length);
 
-        for (int i = 0; i < N; i++) {
-            map.put(coordinates[i], 0);
-        }
+        Arrays.sort(copyOfCoordinates);
 
-        int[] copyOfCoordinates = Arrays.stream(coordinates).distinct().sorted().toArray();
-
-        for (int j = 0; j < map.size(); j++) {
-            map.put(copyOfCoordinates[j], j);
+        for (int j = 0; j < N; j++) {
+            if (!map.containsKey(copyOfCoordinates[j])) {
+                map.put(copyOfCoordinates[j], theNumberOfSmallerValue++);
+            }
         }
 
         for (int el : coordinates) {
