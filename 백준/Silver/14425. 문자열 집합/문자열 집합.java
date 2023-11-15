@@ -1,13 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        List<String> stringList = new ArrayList<>();
+        Map<String, Integer> stringIntegerMap = new HashMap<>();
         String[] counts = br.readLine().split(" ");
         int answer = 0;
 
@@ -15,11 +15,11 @@ public class Main {
         final int M = Integer.parseInt(counts[1]);
 
         for (int i = 0; i < N; i++) {
-            stringList.add(br.readLine());
+            stringIntegerMap.put(br.readLine(), 1);
         }
 
         for (int j = 0; j < M; j++) {
-            if (stringList.contains(br.readLine())) {
+            if (stringIntegerMap.containsKey(br.readLine())) {
                 answer++;
             }
         }
