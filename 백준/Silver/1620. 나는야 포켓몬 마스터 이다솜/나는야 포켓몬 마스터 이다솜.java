@@ -13,19 +13,20 @@ public class Main {
         final int N = Integer.parseInt(count[0]);
         final int M = Integer.parseInt(count[1]);
         Map<String, Integer> stringIntegerMap = new LinkedHashMap<>();
+        String[] keySet = new String[N + 1];
 
         for (int i = 0; i < N; i++) {
-            stringIntegerMap.put(br.readLine(), i + 1);
+            String pockemon = br.readLine();
+            stringIntegerMap.put(pockemon, i + 1);
+            keySet[i + 1] = pockemon;
         }
-
-        String[] keySet = stringIntegerMap.keySet().stream().toArray(String[]::new);
 
         for (int i = 0; i < M; i++) {
             String input = br.readLine();
 
             if (input.matches("\\d+")) {
-                int value = Integer.parseInt(input);
-                sb.append(keySet[value - 1]);
+                int idx = Integer.parseInt(input);
+                sb.append(keySet[idx]);
             } else {
                 sb.append(stringIntegerMap.get(input));
             }
