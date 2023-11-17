@@ -21,16 +21,6 @@ public class Main {
     }
 
     private static int gcd(int a, int b) {
-        int min = Integer.min(a, b);
-        int result = 1;
-
-        for (int i = min; i > 1; i--) {
-            if (a % i == 0 && b % i == 0) {
-                result *= i;
-                break;
-            }
-        }
-
-        return result;
+        return b == 0 ? a : gcd(b, a % b);
     }
 }
