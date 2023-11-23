@@ -25,7 +25,7 @@ public class Main {
     private static String isItBalanced(String input) {
         Stack<Character> characterStack = new Stack<>();
 
-        for (char el : input.replaceAll("[a-zA-Z|\\s]", "").toCharArray()) {
+        for (char el : input.toCharArray()) {
             if (el == '(' || el == '[') {
                 characterStack.push(el);
             } else if (el == ')') {
@@ -42,7 +42,7 @@ public class Main {
                 }
             }
         }
-        
+
         return characterStack.isEmpty() ? "yes" : "no";
     }
 }
