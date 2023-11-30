@@ -1,8 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -13,31 +13,36 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int[] move = new int[N];
-        Deque<Integer> balloons = new ArrayDeque<>();
+        List<Integer> balloons = new LinkedList<>();
 
         for (int i = 0; i < N; i++) {
             move[i] = Integer.parseInt(st.nextToken());
-            balloons.offer(i + 1);
+            balloons.add(i + 1);
         }
 
+        int idx = 0;
+
         while (true) {
-            int cur = balloons.pollFirst();
+            int cur = balloons.get(idx);
+
             sb.append(cur).append(" ");
+            balloons.remove(idx);
 
             if (balloons.isEmpty()) {
                 break;
             }
 
-            int nextIdx = move[cur - 1];
+            int distance = move[cur - 1];
 
-            if (nextIdx > 0) {
-                while (--nextIdx > 0) {
-                    balloons.offerLast(balloons.pollFirst());
-                }
-            } else {
-                while (nextIdx++ < 0) {
-                    balloons.offerFirst(balloons.pollLast());
-                }
+            if (distance > 0) {
+                distance--;
+            }
+
+            final int SIZE = balloons.size();
+            idx = (idx + distance) % SIZE;
+
+            if (idx < 0) {
+                idx += SIZE;
             }
         }
 
