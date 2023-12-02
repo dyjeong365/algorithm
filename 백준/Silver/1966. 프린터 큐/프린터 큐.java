@@ -1,8 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -18,42 +17,41 @@ public class Main {
             final int N = Integer.parseInt(st.nextToken());
             final int M = Integer.parseInt(st.nextToken());
 
-            Deque<Integer> priority = new ArrayDeque<>();
+            LinkedList<int[]> queue = new LinkedList<>();
             st = new StringTokenizer(br.readLine());
 
             for (int j = 0; j < N; j++) {
-                priority.offer(Integer.parseInt(st.nextToken()));
+                queue.offer(new int[]{j, Integer.parseInt(st.nextToken())});
             }
 
-            int idx = 0;
             int count = 0;
-            int max = priority.stream().mapToInt(Integer::intValue).max().getAsInt();
 
-            while (max != 0) {
-                int value = priority.poll();
+            while (!queue.isEmpty()) {
+                int[] front = queue.poll();
 
-                if (value != max) {
-                    priority.offer(value);
-                } else {
+                if (isMax(front, queue)) {
                     count++;
-                    value = 0;
-                    priority.offer(value);
 
-                    if (idx == M) {
+                    if (front[0] == M) {
                         sb.append(count).append("\n");
                         break;
-                    } else {
-                        if (!priority.isEmpty()) {
-                            max = priority.stream().mapToInt(Integer::intValue).max().getAsInt();
-                        }
-
                     }
+                } else {
+                    queue.offer(front);
                 }
-
-                idx = ++idx % N;
             }
         }
 
         System.out.print(sb);
+    }
+
+    private static boolean isMax(int[] front, LinkedList<int[]> queue) {
+        for (int i = 0; i < queue.size(); i++) {
+            if (front[1] < queue.get(i)[1]) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
