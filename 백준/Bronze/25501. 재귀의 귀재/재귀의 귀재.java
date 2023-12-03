@@ -9,15 +9,15 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < T; i++) {
-            sb.append(isPalindrome(br.readLine())).append("\n");
+            int count = 0;
+            
+            sb.append(isPalindrome(br.readLine(), count)).append("\n");
         }
 
         System.out.print(sb);
     }
 
-    private static String isPalindrome(String s) {
-        int count = 0;
-
+    private static String isPalindrome(String s, int count) {
         return recursion(s, 0, s.length() - 1, count);
     }
 
