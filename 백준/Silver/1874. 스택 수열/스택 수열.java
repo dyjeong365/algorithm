@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 public class Main {
@@ -12,23 +10,27 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
         Stack<Integer> stack = new Stack<>();
-        Queue<Integer> sequences = new LinkedList<>();
+        int start = 1;
 
-        for (int i = 0; i < n; i++) {
-            sequences.offer(Integer.parseInt(br.readLine()));
-        }
+        while (n-- > 0) {
+            int target = Integer.parseInt(br.readLine());
 
-        for (int i = 1; i <= n; i++) {
-            stack.push(i);
-            sb.append("+").append("\n");
+            if (start <= target) {
+                for (int j = start; j <= target; j++) {
+                    stack.push(j);
+                    sb.append("+").append("\n");
+                }
 
-            while (!stack.isEmpty() && !sequences.isEmpty() && stack.peek().equals(sequences.peek())) {
-                stack.pop();
-                sequences.poll();
-                sb.append("-").append("\n");
+                start = ++target;
+            } else if (stack.peek() != target) {
+                System.out.println("NO");
+                return;
             }
+
+            stack.pop();
+            sb.append("-").append("\n");
         }
 
-        System.out.print(stack.isEmpty() && sequences.isEmpty() ? sb : "NO");
+        System.out.print(sb);
     }
 }
