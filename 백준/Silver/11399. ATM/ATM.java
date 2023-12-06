@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -9,19 +8,24 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         final int N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        PriorityQueue<Integer> time = new PriorityQueue<>();
-        int minValueOfSum = 0;
-        int result = 0;
+
+        final int MAX = 1000;
+        int[] time = new int[MAX + 1];
 
         for (int i = 0; i < N; i++) {
-            time.offer(Integer.parseInt(st.nextToken()));
+            time[Integer.parseInt(st.nextToken())]++;
         }
 
-        while (!time.isEmpty()) {
-            result += time.poll();
-            minValueOfSum += result;
+        int prev = 0;
+        int sum = 0;
+
+        for (int i = 1; i <= MAX; i++) {
+            while (time[i]-- > 0) {
+                sum += (i + prev);
+                prev += i;
+            }
         }
 
-        System.out.print(minValueOfSum);
+        System.out.print(sum);
     }
 }
