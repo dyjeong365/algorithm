@@ -19,12 +19,17 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
+            String site = st.nextToken();
+            String password = st.nextToken();
 
-            map.put(st.nextToken(), st.nextToken());
+            map.put(site, password);
         }
 
         for (int i = 0; i < M; i++) {
-            sb.append(map.get(br.readLine())).append("\n");
+            String site = br.readLine();
+            String password = map.get(site);
+
+            sb.append(password).append("\n");
         }
 
         System.out.print(sb);
