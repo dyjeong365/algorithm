@@ -8,7 +8,7 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
 
         final int MAX = 1000;
-        long[] fibonacci = new long[MAX + 1];
+        int[] fibonacci = new int[MAX + 1];
 
         fibonacci[1] = 1;
         fibonacci[2] = 2;
