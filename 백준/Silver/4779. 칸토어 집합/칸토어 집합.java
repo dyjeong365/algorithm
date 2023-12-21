@@ -9,7 +9,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder answer = new StringBuilder();
         String input;
 
         while ((input = br.readLine()) != null) {
@@ -22,10 +21,8 @@ public class Main {
             }
 
             makeCantorianSet(0, len);
-            answer.append(sb).append("\n");
+            System.out.println(sb);
         }
-
-        System.out.print(answer);
     }
 
     private static void makeCantorianSet(int start, int len) {
