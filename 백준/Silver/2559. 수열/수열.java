@@ -12,7 +12,6 @@ public class Main {
         final int N = Integer.parseInt(st.nextToken());
         final int K = Integer.parseInt(st.nextToken());
         int[] temperatures = new int[N + 1];
-        int lengthOfSum = N - K + 1;
 
         st = new StringTokenizer(br.readLine());
 
@@ -23,8 +22,8 @@ public class Main {
 
         int max = Integer.MIN_VALUE;
 
-        for (int i = 1; i < lengthOfSum + 1; i++) {
-            max = Integer.max(max, (temperatures[i - 1 + K] - temperatures[i - 1]));
+        for (int i = K; i < N + 1; i++) {
+            max = Integer.max(max, (temperatures[i] - temperatures[i - K]));
         }
 
         System.out.print(max);
