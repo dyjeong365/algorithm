@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
+    static final int R = 31;
+    static final long M = 1_234_567_891;
     static String vanila;
     static int length;
 
@@ -15,16 +17,22 @@ public class Main {
     }
 
     private static void makeHash() {
-        long result = 0;
-        final int R = 31;
-        final int M = 1234567891;
-
-        char[] splitedVanila = vanila.toCharArray();
+        long sum = 0;
 
         for (int i = 0; i < length; i++) {
-            result += ((Math.pow(R, i) * (splitedVanila[i] - '`')) % M);
+            sum += ((vanila.charAt(i) - '`') * pow(i)) % M;
         }
 
-        System.out.print(result);
+        System.out.print(sum % M);
+    }
+
+    private static long pow(int index) {
+        long result = 1;
+
+        for (int j = 0; j < index; j++) {
+            result = (result * R) % M;
+        }
+
+        return result;
     }
 }
