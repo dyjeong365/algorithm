@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -28,23 +30,43 @@ public class Main {
         }
 
         visited = new boolean[computers + 1];
+        
+        /*
+        dfs
+        
         dfs(1);
-        count = computers == 1 ? 0 : count - 1;
-
+        count = computers == 1 ? 0 : count - 1;     
+         */
+        
+        bfs(1);
         System.out.print(count);
     }
 
     private static void dfs(int v) {
-        if (visited[v]) {
-            return;
-        }
-
         visited[v] = true;
         count++;
 
         for (int i = 1; i < computers + 1; i++) {
             if (graph[v][i] && !visited[i]) {
                 dfs(i);
+            }
+        }
+    }
+
+    private static void bfs(int v) {
+        Queue<Integer> queue = new LinkedList<>();
+        visited[v] = true;
+        queue.offer(v);
+
+        while (!queue.isEmpty()) {
+            int computer = queue.poll();
+
+            for (int i = 1; i < computers + 1; i++) {
+                if (graph[computer][i] && !visited[i]) {
+                    queue.offer(i);
+                    visited[i] = true;
+                    count++;
+                }
             }
         }
     }
