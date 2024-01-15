@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         final int LENGTH = nums.length;
