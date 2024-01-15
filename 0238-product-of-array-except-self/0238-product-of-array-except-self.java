@@ -7,8 +7,9 @@ class Solution {
         answer[0] = 1;
         int left = 1;
         
-        for(int i=1; i<LENGTH; i++) {
-            answer[i] = answer[i-1] * nums[i-1];
+        for(int i=0; i<LENGTH; i++) {
+            answer[i] = left;
+            left *= nums[i];
         }
         
         int right = 1;
