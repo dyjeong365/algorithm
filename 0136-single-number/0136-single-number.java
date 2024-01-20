@@ -2,19 +2,12 @@ import java.util.*;
 
 class Solution {
     public int singleNumber(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
+        int answer = 0;
         
         for(var num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+            answer ^= num;
         }
         
-        for(var entry : map.entrySet()) {
-            if(entry.getValue() == 1) {
-                return entry.getKey();
-
-            }
-        }
-        
-        return 0;
+        return answer;
     }
 }
