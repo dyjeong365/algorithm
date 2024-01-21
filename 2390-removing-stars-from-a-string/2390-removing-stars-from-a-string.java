@@ -13,10 +13,10 @@ class Solution {
             }
         }
         
-        while(!stack.isEmpty()) {
-            sb.append(stack.pop());
+        for(var el : stack) {
+            sb.append(el);
         }
         
-        return sb.reverse().toString();
+        return sb.toString();
     }
 }
