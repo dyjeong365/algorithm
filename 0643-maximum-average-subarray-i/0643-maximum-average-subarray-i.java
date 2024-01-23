@@ -1,17 +1,17 @@
 class Solution {
     public double findMaxAverage(int[] nums, int k) {
-        final int LENGTH = nums.length;
-        int prev;
+        double sum = 0.0;
         
-        for(int i=1; i<LENGTH; i++) {
-            prev = nums[i - 1];
-            nums[i] += prev;
+        for(int i=0; i<k; i++) {
+            sum += nums[i];
         }
         
-        double max = nums[k - 1];
+        double max = sum;
         
-        for(int j=k; j<LENGTH; j++) {
-            max = Math.max(max, nums[j] - nums[j - k]);
+        for(int j=k; j<nums.length; j++) {
+            // pollFirst and offerLast
+            sum += nums[j] - nums[j - k];
+            max = Math.max(max, sum);
         }
         
         return max / k;
