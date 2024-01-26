@@ -25,16 +25,13 @@ class Solution {
     }
     
     private void dfs (TreeNode root, List<Integer> sequence) {
-        if(root == null) {
-            return;
+        if(root != null) {
+            if(root.left == null && root.right == null) {
+                sequence.add(root.val);
+            }
+            
+            dfs(root.left, sequence);
+            dfs(root.right, sequence);
         }
-        
-        if(root.left == null && root.right == null) {
-            sequence.add(root.val);
-            return;
-        }
-        
-        dfs(root.left, sequence);
-        dfs(root.right, sequence);
     }
 }
