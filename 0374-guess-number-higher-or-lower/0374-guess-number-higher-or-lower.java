@@ -10,13 +10,16 @@
 public class Solution extends GuessGame {
     public int guessNumber(int n) {
         long start = 1;
+        int end = n;
+        int half = (int)((start + n) / 2);
+        int num = guess(half);
         
-        while(start <= n) {
-            int half = (int)((start + n) / 2);
-            int num = guess(half);
+        while(num != 0 || start <= n) {
+            half = (int)((start + n) / 2);
+            num = guess(half);
             
             if(num == 0) {
-                return half;
+                break;
             }
             
             if(num == -1) {
@@ -28,6 +31,6 @@ public class Solution extends GuessGame {
             }
         }
         
-        return -1;
+        return half;
     }
 }
