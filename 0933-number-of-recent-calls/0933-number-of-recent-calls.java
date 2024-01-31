@@ -1,21 +1,19 @@
 class RecentCounter {
-    List<Integer> requests = new ArrayList<>();
+    Queue<Integer> requests = new LinkedList<>();
 
     public RecentCounter() {
         
     }
     
     public int ping(int t) {
-        requests.add(t);
-        int count = 0;
-
-        for(var request : requests) {
-            if(request >= t - 3000 && request <= t) {
-                count++;
-            }
-        } 
-
-        return count;
+        requests.offer(t);
+        Integer min = t - 3000;
+        
+        while(!requests.isEmpty() && requests.peek() < min) {
+            requests.poll();
+        }
+        
+        return requests.size();
     }
 }
 
