@@ -3,19 +3,23 @@ class Solution {
         Stack<Character> stack = new Stack<>();
         
         for(var el : s.toCharArray()) {
-            if(el == '(' || el == '{' || el == '[') {
-                stack.push(el);    
-            } else {
-                if(!stack.isEmpty() && isPair(stack.peek(), el)) {
-                    stack.pop();
-                } else return false;
+            if(el == '(') {
+                stack.push(')');
+            }
+            
+            else if(el == '{') {
+                stack.push('}');
+            }
+            
+            else if(el == '[') {
+                stack.push(']');
+            }
+            
+            else if(stack.isEmpty() || stack.pop() != el) {
+                return false;
             }
         }
         
         return stack.isEmpty();
-    }
-    
-    private boolean isPair(Character prev, Character el) {
-        return (prev == '(' && el == ')') || (prev == '{' && el == '}') || (prev == '[' && el == ']');
     }
 }
