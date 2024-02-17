@@ -1,19 +1,13 @@
 class Solution {
     public int removeElement(int[] nums, int val) {
-        Queue<Integer> queue = new LinkedList<>();
+        int i = 0;
 
-        for(var num : nums) {
-            if(num != val) {
-                queue.offer(num);
+        for (var num : nums) {
+            if (num != val) {
+                nums[i++] = num;
             }
         }
 
-        final int SIZE = queue.size();
-
-        for(int i=0; i<SIZE; i++) {
-            nums[i] = queue.poll();
-        }
-
-        return SIZE;
+        return i;
     }
 }
