@@ -1,13 +1,22 @@
 class Solution {
     public void rotate(int[] nums, int k) {
-        Map<Integer, Integer> treeMap = new TreeMap<>();
+        k %= nums.length;
 
-        for(int i=0; i<nums.length; i++) {
-            treeMap.put((i + k) % nums.length, nums[i]);
-        }
+        // entire
+        reverse(nums, 0, nums.length - 1);
 
-        for(int i=0; i<nums.length; i++) {
-            nums[i] = treeMap.get(i);
+        // k elements
+        reverse(nums, 0, k - 1);
+
+        // remaining
+        reverse(nums, k, nums.length - 1);
+    }
+
+    private void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int tmp = nums[start];
+            nums[start++] = nums[end];
+            nums[end--] = tmp;
         }
     }
 }
