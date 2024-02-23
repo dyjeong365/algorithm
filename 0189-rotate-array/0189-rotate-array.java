@@ -1,17 +1,9 @@
 class Solution {
     public void rotate(int[] nums, int k) {
-        Deque<Integer> deque = new ArrayDeque<>();
+        int[] copyOfNums = Arrays.copyOf(nums, nums.length);
 
-        for(var num : nums) {
-            deque.offer(num);
-        }
-
-        while(k-- > 0) {
-            deque.offerFirst(deque.pollLast());
-        }
-
-        for(int i=0; i<nums.length; i++) {
-            nums[i] = deque.poll();
+        for (int i = 0; i < nums.length; i++) {
+            nums[(i + k) % nums.length] = copyOfNums[i];
         }
     }
 }
