@@ -1,9 +1,13 @@
 class Solution {
     public void rotate(int[] nums, int k) {
-        int[] copyOfNums = Arrays.copyOf(nums, nums.length);
+        Map<Integer, Integer> treeMap = new TreeMap<>();
 
-        for (int i = 0; i < nums.length; i++) {
-            nums[(i + k) % nums.length] = copyOfNums[i];
+        for(int i=0; i<nums.length; i++) {
+            treeMap.put((i + k) % nums.length, nums[i]);
+        }
+
+        for(int i=0; i<nums.length; i++) {
+            nums[i] = treeMap.get(i);
         }
     }
 }
