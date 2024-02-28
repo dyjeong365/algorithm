@@ -4,7 +4,7 @@ class RandomizedSet {
 
     public RandomizedSet() {
         map = new HashMap<>();
-        list = new LinkedList<>();
+        list = new ArrayList<>();
     }
 
     public boolean insert(int val) {
@@ -30,9 +30,9 @@ class RandomizedSet {
     }
 
     public int getRandom() {
-        int rand = (int) (Math.random() * list.size());
+        Random rand = new Random();
 
-        return list.get(rand);
+        return list.get(rand.nextInt(list.size()));
     }
 }
 
