@@ -7,13 +7,20 @@ class Solution {
         while (start < end) {
             int point = height[start];
             int target = height[end];
-            int distance = end - start;
-            max = Math.max(max, distance * Math.min(point, target));
+            int w = end - start;
+            int h = Math.min(point, target);
+            int area = w * h;
+            max = Math.max(max, area);
 
-            if (point >= target) {
+            if (point > target) {
                 end--;
-            } else {
+            } else if (point < target) {
                 start++;
+            } else {
+                // whatever future area calculated will always be less than our original area
+                // So we change the start and end values together.
+                start++;
+                end--;
             }
         }
 
