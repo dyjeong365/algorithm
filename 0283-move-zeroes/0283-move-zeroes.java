@@ -1,20 +1,15 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-        int start = 0;
-        int end = 1;
+        int idx = 0;
 
-        while (end < nums.length) {
-            if (nums[start] == 0 && nums[end] != 0) {
-                nums[start] = nums[end];
-                nums[end] = 0;
-                start++;
-                end++;
-            } else if (nums[start] == 0 && nums[end] == 0) {
-                end++;
-            } else {
-                start++;
-                end++;
+        for(var num : nums){
+            if(num != 0) {
+                nums[idx++] = num;
             }
+        }
+
+        while(idx < nums.length) {
+            nums[idx++] = 0;
         }
     }
 }
