@@ -1,19 +1,25 @@
 class Solution {
     public boolean isMonotonic(int[] nums) {
-        final int LENGTH = nums.length;
-        int positiveNum = 0;
-        int negativeNum = 0;
+        int direction = 0;
 
-        for (int i = 1; i < LENGTH; i++) {
-            if (nums[i] - nums[i - 1] >= 0) {
-                positiveNum++;
-            } 
-            
-            if (nums[i] - nums[i - 1] <= 0) {
-                negativeNum++;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i - 1]) {
+                if (direction == 0) {
+                    direction = 1;
+                } else if (direction == -1) {
+                    return false;
+                }
+            }
+
+            else if (nums[i] < nums[i - 1]) {
+                if (direction == 0) {
+                    direction = -1;
+                } else if (direction == 1) {
+                    return false;
+                }
             }
         }
 
-        return positiveNum == LENGTH - 1 || negativeNum == LENGTH - 1;
+        return true;
     }
 }
