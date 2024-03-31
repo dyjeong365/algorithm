@@ -1,15 +1,7 @@
 class Solution {
     public int countOdds(int low, int high) {
-        int count = 0;
+        int num = high - low + 1;
 
-        if (low % 2 == 0) {
-            low++;
-        }
-
-        for (int i = low; i <= high; i += 2) {
-            count++;
-        }
-
-        return count;
+        return low % 2 != 0 && high % 2 != 0 ? num / 2 + 1 : num / 2;
     }
 }
