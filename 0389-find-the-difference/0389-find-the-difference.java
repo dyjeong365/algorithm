@@ -1,15 +1,19 @@
 class Solution {
     public char findTheDifference(String s, String t) {
-        char c = 0;
+        int[] count = new int[26];
 
         for(var el : s.toCharArray()) {
-            c ^= el;
+            ++count[el - 'a'];
         }
 
         for(var el : t.toCharArray()) {
-            c ^= el;
+            if(count[el - 'a'] == 0) {
+                return el;
+            }
+
+            --count[el - 'a'];
         }
 
-        return c;
+        return ' ';
     }
 }
