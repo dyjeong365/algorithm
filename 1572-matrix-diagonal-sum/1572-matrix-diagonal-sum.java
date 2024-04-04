@@ -1,27 +1,18 @@
 class Solution {
     public int diagonalSum(int[][] mat) {
-        final int LENGTH = mat.length;
-        Set<String> set = new HashSet<>();
+        final int n = mat.length;
         int sum = 0;
 
-        for (int i = 0; i < LENGTH; i++) {
-            for (int j = 0; j < LENGTH; j++) {
-                if (i == j) {
-                    sum += mat[i][j];
-                }
-            }
-        }
+        for (int i = 0; i < n; i++) {
+            // sum of all elements on the primary diagonal
+            sum += mat[i][i];
 
-        int i = 0;
-        int j = LENGTH - 1;
+            // sum of all elements on the secondary diagonal
+            int j = n - 1 - i;
 
-        while (i <= LENGTH - 1 && j >= 0) {
             if (i != j) {
                 sum += mat[i][j];
             }
-
-            i++;
-            j--;
         }
 
         return sum;
