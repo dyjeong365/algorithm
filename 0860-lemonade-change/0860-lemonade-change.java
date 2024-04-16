@@ -9,22 +9,23 @@ class Solution {
             }
 
             else if (bill == 10) {
-                tens++;
-
                 if (fives == 0) {
                     return false;
                 }
 
+                tens++;
                 fives--;
             }
 
+            // pay: 20$, change: 15$
             else {
-                // 15$: 10$, 5$ / 5$, 5$, 5$
+                // 10$, 5$
                 if (tens > 0 && fives > 0) {
                     tens--;
                     fives--;
                 }
 
+                // 5$, 5$, 5$
                 else if (fives >= 3) {
                     fives -= 3;
                 }
