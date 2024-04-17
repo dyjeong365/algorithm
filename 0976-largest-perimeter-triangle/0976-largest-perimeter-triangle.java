@@ -1,23 +1,14 @@
 class Solution {
     public int largestPerimeter(int[] nums) {
-        int len = nums.length;
-        int i = len - 3;
-        int j = len - 2;
-        int k = len - 1;
-
         Arrays.sort(nums);
 
-        while (i >= 0 && j >= 0 && k >= 0) {
-            int largest = nums[k];
-            int sumWithoutLargest = nums[i] + nums[j];
+        for (int i = nums.length - 1; i > 1; i--) {
+            int largest = nums[i];
+            int sumWithoutLargest = nums[i - 1] + nums[i - 2];
 
-            if (sumWithoutLargest > largest) {
-                return sumWithoutLargest + largest;
+            if (largest < sumWithoutLargest) {
+                return largest + sumWithoutLargest;
             }
-
-            i--;
-            j--;
-            k--;
         }
 
         return 0;
