@@ -1,9 +1,19 @@
 class Solution {
     public boolean checkStraightLine(int[][] coordinates) {
-        for (int i = 2; i < coordinates.length; i++) {
-            if ((coordinates[i - 2][0] - coordinates[i - 1][0])
-                    * (coordinates[i - 1][1] - coordinates[i][1]) != (coordinates[i - 1][0] - coordinates[i][0])
-                            * (coordinates[i - 2][1] - coordinates[i - 1][1])) {
+        int x0 = coordinates[0][0];
+        int y0 = coordinates[0][1];
+        int x1 = coordinates[1][0];
+        int y1 = coordinates[1][1];
+
+        int dx = x1 - x0;
+        int dy = y1 - y0;
+
+        for (var coordinate : coordinates) {
+            int x = coordinate[0];
+            int y = coordinate[1];
+
+            // (y - y1) / (x - x1) = (y1 - y0) / (x1 - x0)
+            if (dx * (y - y1) != dy * (x - x1)) {
                 return false;
             }
         }
