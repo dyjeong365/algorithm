@@ -1,24 +1,29 @@
 class MyStack {
-    Deque<Integer> deque;
+    Queue<Integer> queue;
 
     public MyStack() {
-        deque = new ArrayDeque<>();
+        queue = new LinkedList<>();
     }
 
     public void push(int x) {
-        deque.offer(x);
+        queue.offer(x);
+
+        // rotating the queue until the new element is at the front
+        for (int i = 1; i < queue.size(); i++) {
+            queue.offer(queue.remove());
+        }
     }
 
     public int pop() {
-        return deque.pollLast();
+        return queue.remove();
     }
 
     public int top() {
-        return deque.peekLast();
+        return queue.peek();
     }
 
     public boolean empty() {
-        return deque.isEmpty();
+        return queue.isEmpty();
     }
 }
 
