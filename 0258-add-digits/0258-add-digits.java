@@ -1,21 +1,15 @@
 class Solution {
     public int addDigits(int num) {
-        if (num < 10) {
-            return num;
+        if (num == 0) {
+            return 0;
         }
 
-        int sum = 0;
-
-        while (num >= 10) {
-            sum = 0;
-
-            for (var el : String.valueOf(num).toCharArray()) {
-                sum += (el - '0');
-            }
-
-            num = sum;
+        else if (num % 9 == 0) {
+            return 9;
         }
 
-        return sum;
+        else {
+            return num % 9;
+        }
     }
 }
