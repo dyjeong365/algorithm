@@ -1,17 +1,12 @@
 class Solution {
     public int missingNumber(int[] nums) {
-        int[] counts = new int[nums.length + 1];
+        int res = nums.length;
 
-        for (var num : nums) {
-            counts[num]++;
+        for (int i = 0; i < nums.length; i++) {
+            res ^= i;
+            res ^= nums[i];
         }
 
-        for (int i = 0; i < counts.length; i++) {
-            if (counts[i] == 0) {
-                return i;
-            }
-        }
-
-        return -1;
+        return res;
     }
 }
