@@ -1,13 +1,13 @@
 class Solution {
     public int missingNumber(int[] nums) {
-        Map<Integer, Boolean> map = new HashMap<>();
+        int[] counts = new int[nums.length + 1];
 
         for (var num : nums) {
-            map.put(num, true);
+            counts[num]++;
         }
 
-        for (int i = 0; i <= nums.length; i++) {
-            if (!map.containsKey(i)) {
+        for (int i = 0; i < counts.length; i++) {
+            if (counts[i] == 0) {
                 return i;
             }
         }
