@@ -1,8 +1,11 @@
 class Solution {
     public int firstUniqChar(String s) {
-        for (var el : s.split("")) {
-            if (s.indexOf(el) == s.lastIndexOf(el)) {
-                return s.indexOf(el);
+        for (int i = 0; i < s.length(); i++) {
+            char target = s.charAt(i);
+            int idx = s.indexOf(target);
+
+            if (idx == s.lastIndexOf(target)) {
+                return idx;
             }
         }
 
