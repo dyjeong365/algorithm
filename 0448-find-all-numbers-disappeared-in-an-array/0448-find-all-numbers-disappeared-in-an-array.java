@@ -1,29 +1,23 @@
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> answer = new ArrayList<>();
-        int len = nums.length;
-        int num = 1;
-        int i = 0;
 
-        Arrays.sort(nums);
+        /*
+         * We can use the current element as an index and flag its value (in place).
+         * All numbers are > 0, so we can use a negative number.
+         */
+        for (var num : nums) {
+            int idx = Math.abs(num) - 1;
 
-        while (i < len) {
-            if (nums[i] == num) {
-                i++;
-                num++;
-            }
-
-            else if (nums[i] > num) {
-                answer.add(num++);
-            }
-
-            else {
-                i++;
+            if (nums[idx] > 0) {
+                nums[idx] *= -1;
             }
         }
 
-        while (num <= len) {
-            answer.add(num++);
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                answer.add(i + 1);
+            }
         }
 
         return answer;
