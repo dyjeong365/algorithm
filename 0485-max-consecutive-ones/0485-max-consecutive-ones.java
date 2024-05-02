@@ -6,12 +6,12 @@ class Solution {
         for (var num : nums) {
             if (num == 1) {
                 cnt++;
-                max = Math.max(max, cnt);
             } else {
+                max = Math.max(max, cnt);
                 cnt = 0;
             }
         }
 
-        return max;
+        return Math.max(max, cnt);
     }
 }
