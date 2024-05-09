@@ -1,12 +1,11 @@
 class Solution {
     public String reverseWords(String s) {
         final int LEN = s.length();
-        int lastSpaceIdx = -1;
+        int start = 0;
         char[] splitedS = s.toCharArray();
 
         for (int i = 0; i <= LEN; i++) {
             if (i == LEN || splitedS[i] == ' ') {
-                int start = lastSpaceIdx + 1;
                 int end = i - 1;
 
                 while (start < end) {
@@ -17,7 +16,7 @@ class Solution {
                     end--;
                 }
 
-                lastSpaceIdx = i;
+                start = i + 1;
             }
         }
 
