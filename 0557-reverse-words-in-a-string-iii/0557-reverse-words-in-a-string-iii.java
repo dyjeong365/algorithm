@@ -1,16 +1,26 @@
 class Solution {
     public String reverseWords(String s) {
-        StringBuilder answer = new StringBuilder();
+        final int LEN = s.length();
+        int lastSpaceIdx = -1;
+        char[] splitedS = s.toCharArray();
 
-        for (var el : s.split(" ")) {
-            StringBuilder sb = new StringBuilder();
+        for (int i = 0; i <= LEN; i++) {
+            if (i == LEN || splitedS[i] == ' ') {
+                int start = lastSpaceIdx + 1;
+                int end = i - 1;
 
-            sb.append(el);
-            answer.append(sb.reverse().toString()).append(" ");
+                while (start < end) {
+                    char temp = splitedS[start];
+                    splitedS[start] = splitedS[end];
+                    splitedS[end] = temp;
+                    start++;
+                    end--;
+                }
+
+                lastSpaceIdx = i;
+            }
         }
 
-        answer.deleteCharAt(answer.length() - 1);
-
-        return answer.toString();
+        return new String(splitedS);
     }
 }
