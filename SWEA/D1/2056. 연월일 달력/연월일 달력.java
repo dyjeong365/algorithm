@@ -32,11 +32,7 @@ public class Solution {
 
     private static boolean validateDate(String month, String day) {
         if (months.contains(month)) {
-            if (month.charAt(0) == '0') {
-                return Integer.parseInt(day) <= days[month.charAt(1) - '0'];
-            } else {
-                return Integer.parseInt(day) <= days[Integer.parseInt(month)];
-            }
+            return Integer.parseInt(day) <= days[Integer.parseInt(month)];
         }
 
         return false;
