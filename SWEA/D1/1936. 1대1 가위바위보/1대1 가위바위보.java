@@ -6,6 +6,7 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] input = br.readLine().split(" ");
+        char[][] ans = new char[4][4];
 
         final int A = Integer.parseInt(input[0]);
         final int B = Integer.parseInt(input[1]);
@@ -17,10 +18,13 @@ public class Solution {
          A:2 B:1
          A:3 B:2
          */
-        if ((A == 1 && B == 3) || (A == 2 && B == 1) || (A == 3 && B == 2)) {
-            System.out.print("A");
-        } else if ((B == 1 && A == 3) || (B == 2 && A == 1) || (B == 3 && A == 2)) {
-            System.out.print("B");
-        }
+        ans[1][3] = 'A';
+        ans[2][1] = 'A';
+        ans[3][2] = 'A';
+        ans[3][1] = 'B';
+        ans[1][2] = 'B';
+        ans[2][3] = 'B';
+
+        System.out.print(ans[A][B]);
     }
 }
