@@ -9,12 +9,8 @@ public class Solution {
         final int T = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < T; i++) {
-            String input = br.readLine();
-            input = input.replace("a", "");
-            input = input.replace("e", "");
-            input = input.replace("i", "");
-            input = input.replace("o", "");
-            input = input.replace("u", "");
+            String input = br.readLine()
+                    .replaceAll("[aeiou]", "");
 
             sb.append("#")
                     .append(i + 1)
