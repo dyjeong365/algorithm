@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
 public class Solution {
-    static int result;
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         final int T = 10;
@@ -11,20 +9,17 @@ public class Solution {
             final int TN = sc.nextInt();
             final int N = sc.nextInt();
             final int M = sc.nextInt();
-            result = 1;
 
             System.out.println("#" + TN + " " + pow(N, M));
         }
     }
 
     private static int pow(int n, int m) {
-        if (m == 0) {
-            return result;
+        if (m == 1) {
+            return n;
         }
 
-        result *= n;
-
-        return pow(n, m - 1);
+        return n * pow(n, m - 1);
     }
 }
 
