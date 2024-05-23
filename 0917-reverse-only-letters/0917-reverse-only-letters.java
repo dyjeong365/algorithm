@@ -1,23 +1,20 @@
 class Solution {
     public String reverseOnlyLetters(String s) {
-        Stack<Character> stack = new Stack<>();
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < s.length(); i++) {
-            char letter = s.charAt(i);
+        for (int i = s.length() - 1; i >= 0; i--) {
+            char el = s.charAt(i);
 
-            if (Character.isAlphabetic(letter)) {
-                stack.push(letter);
+            if (Character.isLetter(el)) {
+                sb.append(el);
             }
         }
 
         for (int i = 0; i < s.length(); i++) {
-            char letter = s.charAt(i);
+            char el = s.charAt(i);
 
-            if (Character.isAlphabetic(letter)) {
-                sb.append(stack.pop());
-            } else {
-                sb.append(letter);
+            if (!Character.isLetter(el)) {
+                sb.insert(i, el);
             }
         }
 
