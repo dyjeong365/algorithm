@@ -1,20 +1,15 @@
 class Solution {
     public String removeDuplicates(String s) {
-        Deque<Character> deque = new ArrayDeque<>();
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < s.length(); i++) {
-            char target = s.charAt(i);
+        for (var el : s.toCharArray()) {
+            int len = sb.length();
 
-            if (!deque.isEmpty() && deque.peekLast().equals(target)) {
-                deque.pollLast();
+            if (len > 0 && sb.charAt(len - 1) == el) {
+                sb.deleteCharAt(len - 1);
             } else {
-                deque.offerLast(target);
+                sb.append(el);
             }
-        }
-
-        while (!deque.isEmpty()) {
-            sb.append(deque.pollFirst());
         }
 
         return sb.toString();
