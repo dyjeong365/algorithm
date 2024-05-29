@@ -3,12 +3,7 @@ class Solution {
         int answer = 0;
 
         for (var num : nums) {
-            int count = 0;
-
-            while (num != 0) {
-                count++;
-                num /= 10;
-            }
+            int count = (int) Math.floor(Math.log10(num) + 1);
 
             if (count % 2 == 0) {
                 answer++;
