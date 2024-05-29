@@ -3,7 +3,14 @@ class Solution {
         int answer = 0;
 
         for (var num : nums) {
-            if (String.valueOf(num).length() % 2 == 0) {
+            int count = 0;
+
+            while (num != 0) {
+                count++;
+                num /= 10;
+            }
+
+            if (count % 2 == 0) {
                 answer++;
             }
         }
