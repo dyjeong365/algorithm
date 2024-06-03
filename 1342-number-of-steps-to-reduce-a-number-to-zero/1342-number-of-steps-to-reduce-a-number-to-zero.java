@@ -1,5 +1,12 @@
 class Solution {
     public int numberOfSteps(int num) {
-        return Integer.toBinaryString(num).length() - 1 + Integer.bitCount(num);
+        int cnt = 0;
+
+        while (num != 0) {
+            num = (num & 1) == 1 ? num ^ 1 : num >> 1;
+            cnt++;
+        }
+
+        return cnt;
     }
 }
