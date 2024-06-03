@@ -1,22 +1,18 @@
 class Solution {
     public int[] arrayRankTransform(int[] arr) {
-        Map<Integer, Boolean> map = new TreeMap<Integer, Boolean>();
         Map<Integer, Integer> ranking = new HashMap<Integer, Integer>();
+        int[] sortedArr = Arrays.copyOf(arr, arr.length);
 
-        for (var el : arr) {
-            map.put(el, true);
+        Arrays.sort(sortedArr);
+
+        for (var el : sortedArr) {
+            ranking.putIfAbsent(el, ranking.size() + 1);
         }
 
-        int rank = 1;
-
-        for (var keySet : map.keySet()) {
-            ranking.put(keySet, rank++);
+        for (int i = 0; i < sortedArr.length; i++) {
+            sortedArr[i] = ranking.get(arr[i]);
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = ranking.get(arr[i]);
-        }
-
-        return arr;
+        return sortedArr;
     }
 }
