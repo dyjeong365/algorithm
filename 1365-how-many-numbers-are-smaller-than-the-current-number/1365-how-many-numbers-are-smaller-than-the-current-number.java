@@ -1,20 +1,22 @@
 class Solution {
     public int[] smallerNumbersThanCurrent(int[] nums) {
-        int[] answer = new int[nums.length];
+        int[] counts = new int[101];
 
-        for (int i = 0; i < nums.length; i++) {
-            int max = nums[i];
-            int cnt = 0;
-
-            for (int j = 0; j < nums.length; j++) {
-                if (nums[j] < max) {
-                    cnt++;
-                }
-            }
-
-            answer[i] = cnt;
+        for (var num : nums) {
+            counts[num]++;
         }
 
-        return answer;
+        for (int i = 0; i < nums.length; i++) {
+            int point = nums[i];
+            int cnt = 0;
+
+            for (int j = 0; j < point; j++) {
+                cnt += counts[j];
+            }
+
+            nums[i] = cnt;
+        }
+
+        return nums;
     }
 }
