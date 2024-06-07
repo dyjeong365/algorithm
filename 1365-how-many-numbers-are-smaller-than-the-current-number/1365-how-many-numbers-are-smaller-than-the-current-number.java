@@ -6,15 +6,12 @@ class Solution {
             counts[num]++;
         }
 
-        for (int i = 0; i < nums.length; i++) {
-            int point = nums[i];
-            int cnt = 0;
+        for (int i = 1; i < counts.length; i++) {
+            counts[i] += counts[i - 1];
+        }
 
-            for (int j = 0; j < point; j++) {
-                cnt += counts[j];
-            }
-
-            nums[i] = cnt;
+        for (int j = 0; j < nums.length; j++) {
+            nums[j] = (nums[j] == 0) ? 0 : counts[nums[j] - 1];
         }
 
         return nums;
