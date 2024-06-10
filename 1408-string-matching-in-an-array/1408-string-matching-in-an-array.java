@@ -1,18 +1,13 @@
 class Solution {
     public List<String> stringMatching(String[] words) {
         List<String> answer = new ArrayList<>();
+        String str = String.join(" ", words);
 
-        Arrays.sort(words, (a, b) -> a.length() - b.length());
+        for (int i = 0; i < words.length; i++) {
+            String target = words[i];
 
-        for (int i = words.length - 1; i > 0; i--) {
-            String pos = words[i];
-
-            for (int j = i - 1; j >= 0; j--) {
-                String target = words[j];
-
-                if (!answer.contains(target) && pos.contains(target)) {
-                    answer.add(target);
-                }
+            if (str.indexOf(target) != str.lastIndexOf(target)) {
+                answer.add(target);
             }
         }
 
