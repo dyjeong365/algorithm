@@ -1,11 +1,17 @@
 class Solution {
     public int maxProduct(int[] nums) {
-        final int LEN = nums.length;
-        int i = LEN - 1;
-        int j = LEN - 2;
+        int biggest = 0;
+        int secondBiggest = 0;
 
-        Arrays.sort(nums);
-        
-        return (nums[i] - 1) * (nums[j] - 1);
+        for (var num : nums) {
+            if (num > biggest) {
+                secondBiggest = biggest;
+                biggest = num;
+            } else {
+                secondBiggest = Math.max(secondBiggest, num);
+            }
+        }
+
+        return (biggest - 1) * (secondBiggest - 1);
     }
 }
