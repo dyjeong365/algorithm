@@ -3,8 +3,7 @@ class Solution {
         int max = 0;
 
         for (var sentence : sentences) {
-            int numberOfWords = sentence.length() - sentence.replace(" ", "").length() + 1;
-            max = Math.max(max, numberOfWords);
+            max = Math.max(max, sentence.split(" ").length);
         }
 
         return max;
