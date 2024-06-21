@@ -1,13 +1,21 @@
 class Solution {
     public String firstPalindrome(String[] words) {
         for (var word : words) {
-            StringBuilder reversedWord = new StringBuilder(word);
-
-            if (word.equals(reversedWord.reverse().toString())) {
+            if (isPalindrome(word)) {
                 return word;
             }
         }
 
         return "";
+    }
+
+    private boolean isPalindrome(String word) {
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != word.charAt(word.length() - 1 - i)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
