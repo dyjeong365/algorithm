@@ -1,14 +1,36 @@
 class Solution {
     public int minMovesToSeat(int[] seats, int[] students) {
-        int ans = 0;
+        int max = Math.max(findMax(seats), findMax(students));
+        int[] diffs = new int[max + 1];
 
-        Arrays.sort(seats);
-        Arrays.sort(students);
-
-        for (int i = 0; i < seats.length; i++) {
-            ans += Math.abs(seats[i] - students[i]);
+        for (var pos : seats) {
+            diffs[pos]++;
         }
 
-        return ans;
+        for (var pos : students) {
+            diffs[pos]--;
+        }
+
+        int moves = 0;
+        int unmatched = 0;
+
+        for (var diff : diffs) {
+            moves += Math.abs(unmatched);
+            unmatched += diff;
+        }
+
+        return moves;
+    }
+
+    private static int findMax(int[] arr) {
+        int max = 0;
+
+        for (var pos : arr) {
+            if (max < pos) {
+                max = pos;
+            }
+        }
+
+        return max;
     }
 }
