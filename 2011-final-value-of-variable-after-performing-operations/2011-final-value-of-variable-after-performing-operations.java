@@ -2,14 +2,10 @@ class Solution {
     public int finalValueAfterOperations(String[] operations) {
         int res = 0;
 
+        // +: 43
+        // -: 45
         for (var operation : operations) {
-            if (operation.contains("+")) {
-                res++;
-            }
-
-            else if (operation.contains("-")) {
-                res--;
-            }
+            res += 44 - operation.charAt(1);
         }
 
         return res;
