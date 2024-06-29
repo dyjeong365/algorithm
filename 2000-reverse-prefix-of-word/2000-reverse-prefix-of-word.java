@@ -4,11 +4,14 @@ class Solution {
 
         for (int i = 0; i < word.length(); i++) {
             char pos = word.charAt(i);
+
             sb.append(pos);
 
             if (pos == ch) {
                 sb.reverse();
-                ch = 'F';
+                sb.append(word.substring(i + 1));
+
+                return sb.toString();
             }
         }
 
