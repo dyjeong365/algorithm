@@ -6,12 +6,10 @@ class Solution {
     }
 
     private static int gcd(int smallest, int largest) {
-        for (int i = largest; i > 0; i--) {
-            if (largest % i == 0 && smallest % i == 0) {
-                return i;
-            }
+        if (largest == 0) {
+            return smallest;
         }
 
-        return 1;
+        return gcd(largest, smallest % largest);
     }
 }
