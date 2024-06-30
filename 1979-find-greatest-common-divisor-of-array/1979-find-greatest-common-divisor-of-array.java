@@ -12,10 +12,6 @@ class Solution {
     }
 
     private static int gcd(int smallest, int largest) {
-        if (largest == 0) {
-            return smallest;
-        }
-
-        return gcd(largest, smallest % largest);
+        return largest == 0 ? smallest : gcd(largest, smallest % largest);
     }
 }
