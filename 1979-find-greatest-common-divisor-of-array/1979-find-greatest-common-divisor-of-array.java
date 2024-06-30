@@ -1,8 +1,14 @@
 class Solution {
     public int findGCD(int[] nums) {
-        Arrays.sort(nums);
+        int smallest = Integer.MAX_VALUE;
+        int largest = Integer.MIN_VALUE;
 
-        return gcd(nums[0], nums[nums.length - 1]);
+        for (var num : nums) {
+            smallest = Math.min(smallest, num);
+            largest = Math.max(largest, num);
+        }
+
+        return gcd(smallest, largest);
     }
 
     private static int gcd(int smallest, int largest) {
