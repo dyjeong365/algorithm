@@ -1,24 +1,17 @@
 class Solution {
     public boolean areOccurrencesEqual(String s) {
-        Map<Character, Integer> map = new HashMap<>();
+        int[] alphabet = new int[27];
 
         for (int i = 0; i < s.length(); i++) {
-            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
+            alphabet[s.charAt(i) - 'a']++;
         }
 
-        int pos = 0;
+        int prev = alphabet[s.charAt(0) - 'a'];
 
-        for (var value : map.values()) {
-            pos = value;
-            break;
-        }
-
-        for (var value : map.values()) {
-            if(pos != value){
+        for (var pos : alphabet) {
+            if (pos != 0 && pos != prev) {
                 return false;
             }
-
-            pos = value;
         }
 
         return true;
