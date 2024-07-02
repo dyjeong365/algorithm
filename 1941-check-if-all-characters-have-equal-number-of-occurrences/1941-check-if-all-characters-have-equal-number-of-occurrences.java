@@ -6,12 +6,21 @@ class Solution {
             map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
         }
 
-        Set<Integer> set = new HashSet<>();
+        int pos = 0;
 
         for (var value : map.values()) {
-            set.add(value);
+            pos = value;
+            break;
         }
 
-        return set.size() == 1;
+        for (var value : map.values()) {
+            if(pos != value){
+                return false;
+            }
+
+            pos = value;
+        }
+
+        return true;
     }
 }
