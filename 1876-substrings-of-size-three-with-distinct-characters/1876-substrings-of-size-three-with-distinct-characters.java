@@ -3,21 +3,12 @@ class Solution {
         int cnt = 0;
 
         for (int i = 0; i < s.length() - 2; i++) {
-            cnt += isGood(s.substring(i, i + 3));
-        }
-
-        return cnt;
-    }
-
-    private static int isGood(String s) {
-        Set<Character> set = new HashSet<>();
-
-        for (int i = 0; i < 3; i++) {
-            if (!set.add(s.charAt(i))) {
-                return 0;
+            if (s.charAt(i) != s.charAt(i + 1) && s.charAt(i) != s.charAt(i + 2)
+                    && s.charAt(i + 1) != s.charAt(i + 2)) {
+                cnt++;
             }
         }
 
-        return 1;
+        return cnt;
     }
 }
