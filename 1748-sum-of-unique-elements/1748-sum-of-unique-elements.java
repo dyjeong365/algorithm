@@ -1,15 +1,18 @@
 class Solution {
     public int sumOfUnique(int[] nums) {
-        int[] arr = new int[101];
+        Map<Integer, Integer> map = new HashMap<>();
         int sum = 0;
 
         for (var num : nums) {
-            arr[num]++;
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] == 1) {
-                sum += i;
+        for (var entry : map.entrySet()) {
+            int key = entry.getKey();
+            int value = entry.getValue();
+
+            if (value == 1) {
+                sum += key;
             }
         }
 
