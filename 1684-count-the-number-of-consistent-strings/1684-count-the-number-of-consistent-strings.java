@@ -1,20 +1,19 @@
 class Solution {
     public int countConsistentStrings(String allowed, String[] words) {
         int res = words.length;
-        Set<Character> set = new HashSet<>();
+        int[] alphabet = new int[26];
 
         for (var pos : allowed.toCharArray()) {
-            set.add(pos);
+            alphabet[pos - 'a']++;
         }
 
         for (var word : words) {
-            for (int i = 0; i < word.length(); i++) {
-                if (!set.contains(word.charAt(i))) {
+            for (var el : word.toCharArray()) {
+                if (alphabet[el - 'a'] <= 0) {
                     res--;
                     break;
                 }
             }
-
         }
 
         return res;
