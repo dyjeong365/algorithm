@@ -6,7 +6,7 @@ class Solution {
 
         for (int i = 0; i < COL; i++) {
             for (int j = ROW - 1; j >= 0; j--) {
-                ans[i][ROW - j - 1] = image[i][j] == 0 ? 1 : 0;
+                ans[i][ROW - j - 1] = image[i][j] ^ 1;
             }
         }
 
