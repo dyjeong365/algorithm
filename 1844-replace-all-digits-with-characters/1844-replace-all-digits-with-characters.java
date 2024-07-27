@@ -1,17 +1,11 @@
 class Solution {
     public String replaceDigits(String s) {
-        StringBuilder sb = new StringBuilder();
+        char[] splitedS = s.toCharArray();
 
-        for (int i = 0; i < s.length(); i++) {
-            if (i % 2 == 0) {
-                sb.append(s.charAt(i));
-            }
-
-            else {
-                sb.append((char) (s.charAt(i - 1) - '0' + s.charAt(i)));
-            }
+        for (int i = 1; i < splitedS.length; i += 2) {
+            splitedS[i] = (char) (splitedS[i - 1] + splitedS[i] - '0');
         }
 
-        return sb.toString();
+        return new String(splitedS);
     }
 }
