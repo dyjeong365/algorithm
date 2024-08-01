@@ -3,7 +3,7 @@ class Solution {
         int cnt = 0;
 
         for (var word : words) {
-            if (word.startsWith(pref)) {
+            if (word.indexOf(pref) == 0) {
                 cnt++;
             }
         }
