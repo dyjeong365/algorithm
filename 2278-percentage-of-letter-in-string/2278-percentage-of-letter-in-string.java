@@ -9,8 +9,8 @@ class Solution {
             }
         }
 
-        ans = (int) (((double) ans / LEN) * 100);
-        
+        ans = (ans * 100) / LEN;
+
         return ans;
     }
 }
