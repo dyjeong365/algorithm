@@ -1,24 +1,20 @@
 class Solution {
     public int canBeTypedWords(String text, String brokenLetters) {
-        int ans = 0;
-        List<String> list = new ArrayList<>();
+        String[] splitedText = text.split(" ");
+        final int LEN = splitedText.length;
+        int ans = LEN;
+        Set<Character> set = new HashSet<>();
 
-        for (var brokenLetter : brokenLetters.split("")) {
-            list.add(brokenLetter);
+        for (var brokenLetter : brokenLetters.toCharArray()) {
+            set.add(brokenLetter);
         }
 
-        for (var splitedText : text.split(" ")) {
-            boolean flag = true;
-
-            for (var brokenLetter : list) {
-                if (splitedText.contains(brokenLetter) && !brokenLetter.isEmpty()) {
-                    flag = false;
+        for (var pos : splitedText) {
+            for (var splitedPos : pos.toCharArray()) {
+                if (set.contains(splitedPos)) {
+                    ans--;
                     break;
                 }
-            }
-
-            if (flag) {
-                ans++;
             }
         }
 
