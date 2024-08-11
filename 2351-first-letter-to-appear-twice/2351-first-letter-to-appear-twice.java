@@ -1,12 +1,9 @@
 class Solution {
     public char repeatedCharacter(String s) {
-        int[] counts = new int[27];
+        Set<Character> set = new HashSet<>();
 
         for (int i = 0; i < s.length(); i++) {
-            int idx = s.charAt(i) - 'a';
-            counts[idx]++;
-
-            if (counts[idx] == 2) {
+            if (!set.add(s.charAt(i))) {
                 return s.charAt(i);
             }
         }
