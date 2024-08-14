@@ -1,25 +1,16 @@
 class Solution {
     public int findChampion(int[][] grid) {
         final int n = grid[0].length;
-        int[] counts = new int[n];
-        int ans = 0;
-        int max = Integer.MIN_VALUE;
+        int winner = 0;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (grid[i][j] == 1) {
-                    counts[i]++;
+        for (int opponent = 0; opponent < n; opponent++) {
+            if (opponent != winner) {
+                if (grid[winner][opponent] == 0) {
+                    winner = opponent;
                 }
             }
         }
 
-        for (int i = 0; i < n; i++) {
-            if (max < counts[i]) {
-                max = counts[i];
-                ans = i;
-            }
-        }
-
-        return ans;
+        return winner;
     }
 }
