@@ -13,7 +13,7 @@ class Solution {
             }
         }
 
-        for (int i = 0; i < counts.length; i++) {
+        for (int i = 0; i < n; i++) {
             if (max < counts[i]) {
                 max = counts[i];
                 ans = i;
