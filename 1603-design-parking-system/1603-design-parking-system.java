@@ -2,10 +2,7 @@ class ParkingSystem {
     int[] parking;
 
     public ParkingSystem(int big, int medium, int small) {
-        parking = new int[4];
-        parking[1] = big;
-        parking[2] = medium;
-        parking[3] = small;
+        this.parking = new int[] { -1, big, medium, small };
     }
 
     public boolean addCar(int carType) {
