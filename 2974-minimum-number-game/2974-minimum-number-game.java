@@ -1,15 +1,13 @@
 class Solution {
     public int[] numberGame(int[] nums) {
-        final int LEN = nums.length;
-        int[] ans = new int[LEN];
-
         Arrays.sort(nums);
 
-        for (int i = 1; i < LEN; i += 2) {
-            ans[i - 1] = nums[i];
-            ans[i] = nums[i - 1];
+        for (int i = 1; i < nums.length; i += 2) {
+            int tmp = nums[i];
+            nums[i] = nums[i - 1];
+            nums[i - 1] = tmp;
         }
 
-        return ans;
+        return nums;
     }
 }
