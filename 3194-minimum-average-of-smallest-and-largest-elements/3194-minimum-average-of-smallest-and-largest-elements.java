@@ -1,15 +1,16 @@
 class Solution {
     public double minimumAverage(int[] nums) {
         final int n = nums.length;
-        Queue<Double> priorityQueue = new PriorityQueue<>();
+        int start = 0;
+        int end = n - 1;
+        double ans = Double.MAX_VALUE;
 
         Arrays.sort(nums);
 
-        for (int i = 0; i < n; i++) {
-            priorityQueue.offer((nums[i] + nums[n - i - 1]) / 2.0);
+        while (start < end) {
+            ans = Math.min(ans, (nums[start++] + nums[end--]) / 2.0);
         }
 
-        return priorityQueue.poll();
-
+        return ans;
     }
 }
