@@ -1,11 +1,17 @@
 class Solution {
     public boolean checkIfPangram(String sentence) {
-        Set<Character> set = new HashSet<>();
+        boolean[] isPangram = new boolean[26];
 
         for (var pos : sentence.toCharArray()) {
-            set.add(pos);
+            isPangram[pos - 'a'] = true;
         }
 
-        return set.size() == 26;
+        for (var pos : isPangram) {
+            if (!pos) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
