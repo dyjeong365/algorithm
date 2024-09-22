@@ -3,12 +3,10 @@ class Solution {
         int sum = 0;
         int copyOfX = x;
 
-        while (copyOfX >= 10) {
+        while (copyOfX > 0) {
             sum += copyOfX % 10;
             copyOfX /= 10;
         }
-
-        sum += copyOfX;
 
         return x % sum == 0 ? sum : -1;
     }
