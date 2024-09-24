@@ -1,13 +1,15 @@
 class Solution {
     public int countSeniors(String[] details) {
-        int ans = 0;
+        int seniorCount = 0;
 
         for (var detail : details) {
-            if (Integer.parseInt(detail.substring(11, 13)) > 60) {
-                ans++;
+            int age = Integer.parseInt(detail.substring(11, 13));
+            
+            if (age > 60) {
+                seniorCount++;
             }
         }
 
-        return ans;
+        return seniorCount;
     }
 }
