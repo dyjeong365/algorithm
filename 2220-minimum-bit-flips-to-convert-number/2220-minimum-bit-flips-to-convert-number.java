@@ -1,11 +1,14 @@
 class Solution {
     public int minBitFlips(int start, int goal) {
-        if (start == 0 && goal == 0) {
-            return 0;
+        int xorResult = start ^ goal;
+        int ans = 0;
+
+        // Brian Kernghans algorithm to count 1s
+        while (xorResult != 0) {
+            xorResult &= (xorResult - 1); // Clear the lowest set bit
+            ans++;
         }
 
-        int flip = (start & 1) != (goal & 1) ? 1 : 0;
-
-        return flip + minBitFlips(start >> 1, goal >> 1);
+        return ans;
     }
 }
