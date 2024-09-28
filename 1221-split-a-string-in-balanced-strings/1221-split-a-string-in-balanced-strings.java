@@ -1,12 +1,18 @@
 class Solution {
     public int balancedStringSplit(String s) {
-        int sum = 0;
+        Stack<Character> stack = new Stack<>();
         int ans = 0;
 
         for (var pos : s.toCharArray()) {
-            sum += pos == 'L' ? 1 : -1;
+            if (stack.isEmpty() || stack.peek() == pos) {
+                stack.push(pos);
+            }
 
-            if (sum == 0) {
+            else {
+                stack.pop();
+            }
+
+            if (stack.isEmpty()) {
                 ans++;
             }
         }
