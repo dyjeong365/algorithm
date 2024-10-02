@@ -1,13 +1,15 @@
 class Solution {
     public int maximizeSum(int[] nums, int k) {
         int sum = 0;
+        int max = Integer.MIN_VALUE;
 
-        Arrays.sort(nums);
+        for (var num : nums) {
+            max = Math.max(max, num);
+        }
 
-        sum += nums[nums.length - 1] * k;
-
-        for (int i = 1; i < k; i++) {
-            sum += i;
+        while (k-- > 0) {
+            sum += max;
+            max++;
         }
 
         return sum;
