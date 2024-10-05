@@ -1,18 +1,11 @@
 class Solution {
     public String makeSmallestPalindrome(String s) {
-        final int LEN = s.length();
-        char[] ans = s.toCharArray();
+        StringBuilder sb = new StringBuilder(s);
 
-        for (int i = 0; i < LEN; i++) {
-            if (s.charAt(i) - '0' < s.charAt(LEN - 1 - i) - '0') {
-                ans[LEN - 1 - i] = ans[i];
-            }
-
-            else if (s.charAt(i) - '0' > s.charAt(LEN - 1 - i) - '0') {
-                ans[i] = ans[LEN - 1 - i];
-            }
+        for (int i = 0; i < s.length(); i++) {
+            sb.setCharAt(i, (char) Math.min(s.charAt(i), s.charAt(s.length() - 1 - i)));
         }
 
-        return new String(ans);
+        return sb.toString();
     }
 }
