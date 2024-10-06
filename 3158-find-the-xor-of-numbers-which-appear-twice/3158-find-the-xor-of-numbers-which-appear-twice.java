@@ -1,18 +1,15 @@
 class Solution {
     public int duplicateNumbersXOR(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
         int ans = 0;
+        int[] count = new int[51];
 
         for (var num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+            count[num]++;
         }
 
-        for (var entry : map.entrySet()) {
-            int key = entry.getKey();
-            int value = entry.getValue();
-
-            if (value == 2) {
-                ans ^= key;
+        for (int i = 1; i < count.length; i++) {
+            if (count[i] == 2) {
+                ans ^= i;
             }
         }
 
