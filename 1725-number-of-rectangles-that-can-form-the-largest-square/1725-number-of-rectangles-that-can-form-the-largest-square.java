@@ -1,19 +1,23 @@
 class Solution {
     public int countGoodRectangles(int[][] rectangles) {
-        Map<Integer, Integer> map = new TreeMap<>((a, b) -> b - a);
+        int ans = 0;
+        int max = 0;
 
         for (var rectangle : rectangles) {
             int length = rectangle[0];
             int width = rectangle[1];
-            int key = Math.min(length, width);
+            int min = Math.min(length, width);
 
-            map.put(key, map.getOrDefault(key, 0) + 1);
+            if (min > max) {
+                ans = 1;
+                max = min;
+            }
+
+            else if (min == max) {
+                ans++;
+            }
         }
 
-        for (var value : map.values()) {
-            return value;
-        }
-
-        return -1;
+        return ans;
     }
 }
