@@ -1,23 +1,32 @@
 class Solution {
     public int maximumCount(int[] nums) {
-        int pos = 0;
-        int neg = 0;
-        int zero = 0;
+        if (nums[0] > 0 || nums[nums.length - 1] < 0) {
+            return nums.length;
+        }
 
-        for (var num : nums) {
-            if (num < 0) {
-                neg++;
-            }
+        int start = 0;
+        int end = nums.length - 1;
 
-            else if (num > 0) {
-                pos = nums.length - (neg + zero);
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+
+            if (nums[mid] < 0) {
+                start = mid + 1;
             }
 
             else {
-                zero++;
+                end = mid;
             }
         }
 
-        return Math.max(pos, neg);
+        int neg = start;
+
+        while (start < nums.length && nums[start] == 0) {
+            start++;
+        }
+
+        int pos = nums.length - start;
+
+        return Math.max(neg, pos);
     }
 }
