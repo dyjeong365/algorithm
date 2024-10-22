@@ -10,6 +10,6 @@ class Solution {
             ans = arr[i] % 2 != 0 ? ans + 1 : 0;
         }
 
-        return false;
+        return ans == 3 ? true : false;
     }
 }
