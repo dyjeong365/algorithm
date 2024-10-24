@@ -3,30 +3,25 @@ class Solution {
         int m = mat.length;
         int n = mat[0].length;
         int ans = 0;
+        int[] mSum = new int[m];
+        int[] nSum = new int[n];
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (mat[i][j] == 1) {
-                    boolean rowFlag = true;
-                    boolean colFlag = true;
+                mSum[i] += mat[i][j];
+            }
+        }
 
-                    for (int k = 0; k < n; k++) {
-                        if (k != j && mat[i][k] != 0) {
-                            colFlag = false;
-                            break;
-                        }
-                    }
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < m; i++) {
+                nSum[j] += mat[i][j];
+            }
+        }
 
-                    for (int l = 0; l < m; l++) {
-                        if (l != i && mat[l][j] != 0) {
-                            rowFlag = false;
-                            break;
-                        }
-                    }
-
-                    if (rowFlag && colFlag) {
-                        ans++;
-                    }
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (mat[i][j] == 1 && mSum[i] == 1 && nSum[j] == 1) {
+                    ans++;
                 }
             }
         }
