@@ -7,11 +7,8 @@ class Solution {
             map.put(pos, map.getOrDefault(pos, 0) + 1);
         }
 
-        for (var entry : map.entrySet()) {
-            int key = entry.getKey();
-            int value = entry.getValue();
-
-            if (value > twentyFivePer) {
+        for (var key : map.keySet()) {
+            if (map.get(key) > twentyFivePer) {
                 return key;
             }
         }
