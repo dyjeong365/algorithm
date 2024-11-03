@@ -5,11 +5,9 @@ class Solution {
 
         for (var pos : arr) {
             map.put(pos, map.getOrDefault(pos, 0) + 1);
-        }
 
-        for (var key : map.keySet()) {
-            if (map.get(key) > twentyFivePer) {
-                return key;
+            if (map.get(pos) > twentyFivePer) {
+                return pos;
             }
         }
 
