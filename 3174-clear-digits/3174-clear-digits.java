@@ -1,19 +1,22 @@
 class Solution {
     public String clearDigits(String s) {
-        StringBuilder sb = new StringBuilder(s);
+        Stack<Character> stack = new Stack<>();
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < sb.length(); i++) {
-            if (Character.isDigit(sb.charAt(i))) {
+        for (var pos : s.toCharArray()) {
+            if (!stack.isEmpty() && Character.isLetter(stack.peek()) && Character.isDigit(pos)) {
+                stack.pop();
+            }
 
-                for (int j = i - 1; j >= 0; j--) {
-                    if (Character.isAlphabetic(sb.charAt(j))) {
-                        sb.deleteCharAt(j);
-                        sb.deleteCharAt(j);
-                    }
-                }
+            else {
+                stack.push(pos);
             }
         }
 
-        return sb.toString();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+
+        return sb.reverse().toString();
     }
 }
