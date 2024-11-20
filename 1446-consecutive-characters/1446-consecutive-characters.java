@@ -15,6 +15,8 @@ class Solution {
                 res = 1;
             }
         }
+        
+        max = Math.max(max, res);
 
         return max;
     }
