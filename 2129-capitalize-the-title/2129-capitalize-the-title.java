@@ -1,9 +1,8 @@
 class Solution {
     public String capitalizeTitle(String title) {
-        String[] splitedTitle = title.split(" ");
         StringBuilder sb = new StringBuilder();
 
-        for (var pos : splitedTitle) {
+        for (var pos : title.split(" ")) {
             if (pos.length() == 1 || pos.length() == 2) {
                 sb.append(pos.toLowerCase());
             }
