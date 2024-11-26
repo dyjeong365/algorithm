@@ -3,11 +3,11 @@ class Solution {
         int res = 0;
 
         for (var log : logs) {
-            if (log.equals("../") && res > 0) {
-                res--;
+            if (log.equals("../")) {
+                res = Math.max(0, res - 1);
             }
 
-            else if (!log.equals("../") && !log.equals("./")) {
+            else if (!log.equals("./")) {
                 res++;
             }
         }
