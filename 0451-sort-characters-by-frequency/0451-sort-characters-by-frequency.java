@@ -7,12 +7,15 @@ class Solution {
             frequency.put(pos, frequency.getOrDefault(pos, 0) + 1);
         }
 
-        List<Character> keySet = new ArrayList<>(frequency.keySet());
+        PriorityQueue<Map.Entry<Character, Integer>> priorityQueue = new PriorityQueue<>(
+                (a, b) -> b.getValue() - a.getValue());
 
-        Collections.sort(keySet, (a, b) -> frequency.get(b) - frequency.get(a));
+        priorityQueue.addAll(frequency.entrySet());
 
-        for (var key : keySet) {
-            int value = frequency.get(key);
+        while (!priorityQueue.isEmpty()) {
+            Map.Entry<Character, Integer> entry = priorityQueue.poll();
+            Character key = entry.getKey();
+            int value = entry.getValue();
 
             while (value-- > 0) {
                 sb.append(key);
