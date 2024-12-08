@@ -2,7 +2,6 @@ class Solution {
     public String decodeMessage(String key, String message) {
         StringBuilder sb = new StringBuilder();
         Map<Character, Character> map = new HashMap<>();
-        char alphabet = 'a';
         char value = 'a';
 
         for (var pos : key.toCharArray()) {
