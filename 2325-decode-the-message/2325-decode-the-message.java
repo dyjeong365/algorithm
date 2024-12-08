@@ -6,7 +6,7 @@ class Solution {
 
         for (var pos : key.toCharArray()) {
             if (pos != ' ' && !map.containsKey(pos)) {
-                map.put(pos, (char) value++);
+                map.put(pos, value++);
             }
         }
 
