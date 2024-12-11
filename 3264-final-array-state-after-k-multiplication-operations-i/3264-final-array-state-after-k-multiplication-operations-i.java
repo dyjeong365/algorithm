@@ -8,12 +8,10 @@ class Solution {
     }
 
     private static int[] operation(int[] nums, int multiplier) {
-        int min = Integer.MAX_VALUE;
-        int minIdx = -1;
+        int minIdx = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            if (min > nums[i]) {
-                min = nums[i];
+            if (nums[minIdx] > nums[i]) {
                 minIdx = i;
             }
         }
