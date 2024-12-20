@@ -1,20 +1,29 @@
 class Solution {
     public int[] sortArrayByParityII(int[] nums) {
-        Queue<Integer> odd = new LinkedList<Integer>();
-        Queue<Integer> even = new LinkedList<Integer>();
+        final int LEN = nums.length;
+        int even = 0;
+        int odd = 1;
 
-        for (var num : nums) {
-            if (num % 2 == 0) {
-                even.offer(num);
-            } else {
-                odd.offer(num);
+        while (true) {
+            while (even < LEN && nums[even] % 2 == 0) {
+                even += 2;
             }
-        }
 
-        for (int i = 0; i < nums.length; i++) {
-            nums[i] = i % 2 == 0 ? even.poll() : odd.poll();
-        }
+            while (odd < LEN && nums[odd] % 2 == 1) {
+                odd += 2;
+            }
 
-        return nums;
+            if (even >= LEN && odd >= LEN) {
+                return nums;
+            }
+
+            swap(nums, even, odd);
+        }
+    }
+
+    private void swap(int[] nums, int even, int odd) {
+        int temp = nums[even];
+        nums[even] = nums[odd];
+        nums[odd] = temp;
     }
 }
