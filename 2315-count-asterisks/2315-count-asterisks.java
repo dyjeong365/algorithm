@@ -1,24 +1,15 @@
 class Solution {
     public int countAsterisks(String s) {
         int res = 0;
-        int tmp = 0;
-        int numberOfVerticalBar = 0;
+        int bars = 0;
 
         for (var pos : s.toCharArray()) {
-            if (pos == '|') {
-                if (numberOfVerticalBar == 1) {
-                    res = tmp;
-                    numberOfVerticalBar = 0;
-                }
-
-                else {
-                    tmp = res;
-                    numberOfVerticalBar++;
-                }
+            if (pos == '*' && bars % 2 == 0) {
+                res++;
             }
 
-            else if (pos == '*') {
-                res++;
+            if (pos == '|') {
+                bars++;
             }
         }
 
