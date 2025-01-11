@@ -1,24 +1,24 @@
 class Solution {
     public int[] pivotArray(int[] nums, int pivot) {
-        int[] ans = new int[nums.length];
-        int i = 0;
+        final int LEN = nums.length;
+        int[] ans = new int[LEN];
+        int left = 0;
+        int right = LEN - 1;
 
-        for (var num : nums) {
-            if (num < pivot) {
-                ans[i++] = num;
+        for (int i = 0; i < LEN; i++) {
+            if (nums[i] < pivot) {
+                ans[left++] = nums[i];
+            }
+
+            if (nums[LEN - 1 - i] > pivot) {
+                ans[right--] = nums[LEN - 1 - i];
             }
         }
 
-        for (var num : nums) {
-            if (num == pivot) {
-                ans[i++] = num;
-            }
-        }
+        System.out.println("left: " + left + " " + "right: " + right);
 
-        for (var num : nums) {
-            if (num > pivot) {
-                ans[i++] = num;
-            }
+        while (left <= right) {
+            ans[left++] = pivot;
         }
 
         return ans;
