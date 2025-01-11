@@ -15,10 +15,9 @@ class Solution {
             }
         }
 
-        System.out.println("left: " + left + " " + "right: " + right);
-
         while (left <= right) {
             ans[left++] = pivot;
+            ans[right--] = pivot;
         }
 
         return ans;
