@@ -1,12 +1,11 @@
 class Solution {
     public int smallestNumber(int n) {
-        int pow = 0;
+        int res = 1;
 
-        while (n > 0) {
-            n /= 2;
-            pow++;
+        while (res < n) {
+            res = res * 2 + 1;
         }
 
-        return (int) Math.pow(2, pow) - 1;
+        return res;
     }
 }
