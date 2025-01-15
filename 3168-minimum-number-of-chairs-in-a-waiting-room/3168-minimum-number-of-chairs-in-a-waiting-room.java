@@ -1,20 +1,11 @@
 class Solution {
     public int minimumChairs(String s) {
-        int max = -1;
-        int res = 0;
-
-        for (var pos : s.toCharArray()) {
-            if (pos == 'E') {
-                res++;
-            }
-
-            else if (pos == 'L') {
-                res--;
-            }
-
-            max = Math.max(max, res);
+        while (s.contains("LE")) {
+            s = s.replace("LE", "");
         }
 
-        return max;
+        s = s.replace("L", "");
+
+        return s.length();
     }
 }
