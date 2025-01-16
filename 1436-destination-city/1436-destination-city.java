@@ -1,19 +1,23 @@
 class Solution {
     public String destCity(List<List<String>> paths) {
-        Map<String, String> map = new HashMap<>();
-        StringBuilder sb = new StringBuilder(paths.get(0).get(0));
+        final int LEN = paths.size();
 
-        for (var path : paths) {
-            String starting = path.get(0);
-            String destination = path.get(1);
+        for (int i = 0; i < LEN; i++) {
+            String candidate = paths.get(i).get(1);
+            boolean good = true;
 
-            map.put(starting, destination);
+            for (int j = 0; j < LEN; j++) {
+                if (paths.get(j).get(0).equals(candidate)) {
+                    good = false;
+                    break;
+                }
+            }
+
+            if (good) {
+                return candidate;
+            }
         }
 
-        while (map.containsKey(sb.toString())) {
-            sb = new StringBuilder(map.get(sb.toString()));
-        }
-
-        return sb.toString();
+        return "";
     }
 }
