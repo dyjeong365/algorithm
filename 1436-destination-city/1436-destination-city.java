@@ -1,19 +1,16 @@
 class Solution {
     public String destCity(List<List<String>> paths) {
         final int LEN = paths.size();
+        Set<String> set = new HashSet<>();
 
-        for (int i = 0; i < LEN; i++) {
-            String candidate = paths.get(i).get(1);
-            boolean good = true;
+        for (var path : paths) {
+            set.add(path.get(0));
+        }
 
-            for (int j = 0; j < LEN; j++) {
-                if (paths.get(j).get(0).equals(candidate)) {
-                    good = false;
-                    break;
-                }
-            }
+        for (var path : paths) {
+            String candidate = path.get(1);
 
-            if (good) {
+            if (!set.contains(candidate)) {
                 return candidate;
             }
         }
