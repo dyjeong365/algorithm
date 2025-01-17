@@ -4,17 +4,15 @@ class Solution {
         int remains = capacity;
 
         for (int i = 0; i < plants.length; i++) {
-            if (plants[i] <= remains) {
-                steps++;
-            }
-
-            else {
-                steps += 2 * i + 1;
+            if (plants[i] > remains) {
+                steps += 2 * i;
                 remains = capacity;
             }
 
             remains -= plants[i];
         }
+
+        steps += plants.length;
 
         return steps;
     }
