@@ -3,24 +3,16 @@ class Solution {
         List<Integer> ans = new ArrayList<>();
 
         for (int i = left; i <= right; i++) {
-            if (i % 10 != 0) {
-                int pos = i;
-                boolean flag = true;
+            boolean flag = true;
 
-                while (pos > 0) {
-                    int digit = pos % 10;
-
-                    if (digit == 0 || i % digit != 0) {
-                        flag = false;
-                        break;
-                    }
-
-                    pos /= 10;
+            for (var pos : String.valueOf(i).toCharArray()) {
+                if (pos == '0' || (i % (pos - '0') != 0)) {
+                    flag = false;
                 }
+            }
 
-                if (flag) {
-                    ans.add(i);
-                }
+            if (flag) {
+                ans.add(i);
             }
         }
 
