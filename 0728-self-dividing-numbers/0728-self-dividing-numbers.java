@@ -3,12 +3,18 @@ class Solution {
         List<Integer> ans = new ArrayList<>();
 
         for (int i = left; i <= right; i++) {
+            int pos = i;
             boolean flag = true;
 
-            for (var pos : String.valueOf(i).toCharArray()) {
-                if (pos == '0' || (i % (pos - '0') != 0)) {
+            while (pos > 0) {
+                int digit = pos % 10;
+
+                if (digit == 0 || i % digit != 0) {
                     flag = false;
+                    break;
                 }
+
+                pos /= 10;
             }
 
             if (flag) {
