@@ -1,20 +1,17 @@
 class Solution {
     public int totalMoney(int n) {
-        int start = 0;
-        int res = 0;
+        int k = n / 7;
+        int F = 28;
+        int L = 28 + (k - 1) * 7;
+        int sum = k * (F + L) / 2;
 
-        for (int i = 0; i < n / 7; i++) {
-            start++;
+        int lastWeek = 0;
+        int monday = k + 1;
 
-            for (int j = start; j < start + 7; j++) {
-                res += j;
-            }
+        for (int day = 0; day < n % 7; day++) {
+            lastWeek += monday + day;
         }
 
-        for (int k = start + 1; k < start + 1 + (n % 7); k++) {
-            res += k;
-        }
-
-        return res;
+        return sum + lastWeek;
     }
 }
