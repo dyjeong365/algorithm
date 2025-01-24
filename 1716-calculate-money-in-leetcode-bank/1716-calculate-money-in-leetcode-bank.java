@@ -1,18 +1,15 @@
 class Solution {
     public int totalMoney(int n) {
-        int start = 0;
+        int start = 1;
         int res = 0;
 
-        for (int i = 0; i < n / 7; i++) {
-            start++;
-
-            for (int j = start; j < start + 7; j++) {
-                res += j;
+        while (n > 0) {
+            for (int day = start; day < start + Math.min(n, 7); day++) {
+                res += day;
             }
-        }
 
-        for (int k = start + 1; k < start + 1 + (n % 7); k++) {
-            res += k;
+            n -= 7;
+            start++;
         }
 
         return res;
