@@ -4,6 +4,10 @@ class Solution {
             return false;
         }
 
-        return Integer.bitCount(n) == 1;
+        if (n == 1) {
+            return true;
+        }
+
+        return (n % 2 == 0) && isPowerOfTwo(n / 2);
     }
 }
