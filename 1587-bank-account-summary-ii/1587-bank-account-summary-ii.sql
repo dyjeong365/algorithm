@@ -4,4 +4,4 @@ FROM Transactions T
 LEFT JOIN Users U
 ON T.account = U.account
 GROUP BY U.account
-HAVING U.name = 'Alice';
+HAVING BALANCE > 10000;
