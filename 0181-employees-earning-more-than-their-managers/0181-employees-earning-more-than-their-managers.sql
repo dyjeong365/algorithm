@@ -5,4 +5,4 @@ WHERE (
     SELECT salary
     FROM Employee e2
     WHERE e1.managerId = e2.id
-) < salary;
+) < e1.salary;
