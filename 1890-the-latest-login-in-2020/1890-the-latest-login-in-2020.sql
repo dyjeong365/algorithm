@@ -1,5 +1,4 @@
 # Write your MySQL query statement below
-SELECT user_id, MAX(time_stamp) 'last_stamp'
+SELECT DISTINCT user_id, FIRST_VALUE(time_stamp)OVER(PARTITION BY user_id ORDER BY time_stamp DESC) 'last_stamp'
 FROM Logins
-WHERE YEAR(time_stamp) = 2020
-GROUP BY 1;
+WHERE EXTRACT(Year FROM time_stamp) = 2020;
