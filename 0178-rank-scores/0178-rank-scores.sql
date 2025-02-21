@@ -1,8 +1,6 @@
 # Write your MySQL query statement below
-SELECT 
+SELECT
     score,
-    @rank := @rank + (@prev <> (@prev := score)) 'RANK'
-FROM
-    Scores,
-    (SELECT @rank := 0, @prev := -1) INIT
+    (SELECT COUNT(DISTINCT score) FROM Scores WHERE score >= S.score) 'RANK'
+FROM Scores S
 ORDER BY score DESC;
