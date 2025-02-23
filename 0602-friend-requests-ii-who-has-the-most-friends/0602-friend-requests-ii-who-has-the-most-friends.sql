@@ -1,13 +1,13 @@
 # Write your MySQL query statement below
-SELECT U.requester_id 'id', COUNT(U.requester_id) 'num'
-FROM 
-    (
-        SELECT requester_id
-        FROM RequestAccepted
-        UNION ALL
-        SELECT accepter_id
-        FROM RequestAccepted
-    ) U
-GROUP BY U.requester_id
-ORDER BY num DESC
+WITH all_ids AS (
+                    SELECT requester_id 'id'
+                    FROM RequestAccepted
+                    UNION ALL
+                    SELECT accepter_id 'id'
+                    FROM RequestAccepted        
+                )
+SELECT id, COUNT(id) 'num'
+FROM all_ids
+GROUP BY id
+ORDER BY COUNT(id) DESC
 LIMIT 1;
