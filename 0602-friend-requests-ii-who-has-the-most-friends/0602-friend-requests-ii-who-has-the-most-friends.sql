@@ -6,8 +6,10 @@ WITH all_ids AS (
                     SELECT accepter_id 'id'
                     FROM RequestAccepted        
                 )
-SELECT id, COUNT(id) 'num'
-FROM all_ids
-GROUP BY id
-ORDER BY COUNT(id) DESC
-LIMIT 1;
+SELECT id, num
+FROM (
+        SELECT id, COUNT(id) 'num', RANK() OVER(ORDER BY COUNT(id) DESC) 'place'
+        FROM all_ids
+        GROUP BY id
+    ) R
+WHERE place = 1;
