@@ -17,10 +17,10 @@ SELECT E.EMP_NO, EMP_NAME,
         WHEN SCORE >= 80 THEN SAL * 0.1
         ELSE 0
     END 'BONUS'
-FROM HR_DEPARTMENT D, HR_EMPLOYEES E,   (
-                                            SELECT EMP_NO, AVG(SCORE) 'SCORE'
-                                            FROM HR_GRADE
-                                            GROUP BY EMP_NO
-                                        ) G
-WHERE D.DEPT_ID = E.DEPT_ID AND E.EMP_NO = G.EMP_NO
+FROM HR_EMPLOYEES E, (
+                        SELECT EMP_NO, AVG(SCORE) 'SCORE'
+                        FROM HR_GRADE
+                        GROUP BY EMP_NO
+                     ) G
+WHERE E.EMP_NO = G.EMP_NO
 ORDER BY E.EMP_NO;
