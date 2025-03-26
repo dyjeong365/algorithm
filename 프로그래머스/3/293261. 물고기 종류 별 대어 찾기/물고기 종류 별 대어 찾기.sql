@@ -6,10 +6,10 @@
 단, 물고기 종류별 가장 큰 물고기는 1마리만 있으며 10cm 이하의 물고기가 가장 큰 경우는 없습니다.
 */
 SELECT ID, FISH_NAME, LENGTH
-FROM    (
-            SELECT ID, FISH_TYPE, LENGTH, RANK() OVER(PARTITION BY FISH_TYPE ORDER BY LENGTH DESC) 'rnk'
-            FROM FISH_INFO
-        ) I
-        , FISH_NAME_INFO NI
-WHERE I.FISH_TYPE = NI.FISH_TYPE AND rnk = 1
+FROM FISH_INFO I, FISH_NAME_INFO NI
+WHERE I.FISH_TYPE = NI.FISH_TYPE AND (I.FISH_TYPE, LENGTH) IN   (
+                                                                    SELECT FISH_TYPE, MAX(LENGTH)
+                                                                    FROM FISH_INFO
+                                                                    GROUP BY FISH_TYPE
+                                                                )
 ORDER BY ID;
