@@ -1,6 +1,6 @@
 # [level 1] 특정 형질을 가지는 대장균 찾기 - 301646 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/301646) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/301646#) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 04월 06일 16:35:52
+2025년 04월 06일 16:38:11
 
 ### 문제 설명
 
