@@ -9,15 +9,15 @@ GRADE가 존재하는 개발자의 GRADE, ID, EMAIL을 조회하는 SQL 문을 �
 결과는 GRADE와 ID를 기준으로 오름차순 정렬해 주세요.
 */
 WITH TBL AS     (
-                    SELECT DISTINCT CASE
-                                        WHEN SKILL_CODE & (SELECT CODE FROM SKILLCODES WHERE NAME = 'Python') > 0 AND CATEGORY = 'Front End' THEN 'A'
-                                        WHEN SKILL_CODE & (SELECT CODE FROM SKILLCODES WHERE NAME = 'C#') > 0 THEN 'B'
-                                        WHEN CATEGORY = 'Front End' THEN 'C'
-                                    END 'GRADE'
-    , ID
-    , EMAIL
-                    FROM SKILLCODES, DEVELOPERS
-                    WHERE SKILL_CODE & CODE = CODE
+                    SELECT CASE
+                                WHEN SKILL_CODE & (SELECT CODE FROM SKILLCODES WHERE NAME = 'Python') > 0 
+                                    AND SKILL_CODE & (SELECT SUM(CODE) FROM SKILLCODES WHERE CATEGORY = 'Front End') > 0 THEN 'A'
+                                WHEN SKILL_CODE & (SELECT SUM(CODE) FROM SKILLCODES WHERE NAME = 'C#') > 0 THEN 'B'
+                                WHEN SKILL_CODE & (SELECT SUM(CODE) FROM SKILLCODES WHERE CATEGORY = 'Front End') > 0 THEN 'C'
+                            END 'GRADE'
+                            , ID
+                            , EMAIL
+                    FROM DEVELOPERS
                 )
 
 SELECT *
