@@ -5,12 +5,8 @@ Write a solution to report the ids and the names of all managers, the number of 
 
 Return the result table ordered by employee_id.
 */
-SELECT employee_id, name, reports_count, average_age
-FROM Employees e1
-    ,   ( 
-            SELECT reports_to, COUNT(*) 'reports_count', ROUND(AVG(age), 0) 'average_age'
-            FROM Employees
-            GROUP BY reports_to
-        ) e2
-WHERE e1.employee_id = e2.reports_to
-ORDER BY e1.employee_id;
+SELECT mgr.employee_id, mgr.name, COUNT(emp.employee_id) 'reports_count', ROUND(AVG(emp.age), 0) 'average_age'
+FROM Employees emp, Employees mgr
+WHERE mgr.employee_id = emp.reports_to
+GROUP BY mgr.employee_id
+ORDER BY mgr.employee_id;
